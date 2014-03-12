@@ -5,3 +5,4 @@ Aineopintojen harjoitustyo: Tietokantasovellus (periodi IV, 2014) - Hannu Pekka 
 
 12.3.2014
 - alkuvalmisteluja: git, ...
+- varjorepo lisättiin juuri

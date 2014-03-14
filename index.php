@@ -1,5 +1,5 @@
 <?php 
-  $tervehdys = "Moi maailma!"; 
+  $tervehdys = "Moi2 maailma!"; 
 ?><!DOCTYPE HTML>
 <html>
 <head><title><?php echo $tervehdys; ?></title></head>

@@ -1,0 +1,83 @@
+
+<!DOCTYPE html>
+<html>
+    <head>
+        <title></title>
+        <!--
+              <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        -->    </head>
+    <body>
+
+        <form>
+            <button type="button">OMA KEITTOKIRJA</button> 
+        </form>
+        <h2>LISÄÄ RESEPTI</h2>
+
+        <form>
+            Reseptin nimi: <input type="text" name="reseptinNimi"><br>
+        </form>
+
+        <form>
+            Reseptin kuvaus (enintään 500 merkkiä): <input type="text" name="reseptinNimi"><br>
+        </form>
+
+
+
+
+        <h3>Raaka-aineet</h3>
+
+        <h4>Vaihe 1</h4><table>
+
+            <tr>
+                <td>sokeri</td>
+                <td><form>
+                        määrä: <input type="text" name="maara">
+                    </form></td>
+                <td>yksikkö:<select name="cars">
+                        <option value="kpl">kpl</option>
+                        <option value="dl">dl</option>
+                        <option value="g">g</option>
+                        <option value="rl">rl</option>
+                        <option value="tl">tl</option>
+                    </select></td>
+
+            </tr>
+
+            <tr>
+                <td>jauho</td>
+                <td><form>
+                        määrä: <input type="text" name="maara">
+                    </form></td>
+                <td>yksikkö:<select name="cars">
+                        <option value="kpl">kpl</option>
+                        <option value="dl">dl</option>
+                        <option value="g">g</option>
+                        <option value="rl">rl</option>
+                        <option value="tl">tl</option>
+                    </select></td>
+
+            </tr>
+
+        </table>
+
+        <hr>
+
+        <form name="input" action="html_form_action.asp" method="get">
+            <input type="text" name="user">
+            <input type="submit" value="Lisää vaihe">
+        </form> 
+
+        <form name="input" action="html_form_action.asp" method="get">
+            <input type="text" name="user">
+            <input type="submit" value="Lisää raaka-aine">
+        </form> 
+
+        <p>tyhjä tila....</p>
+        <form>
+            <button type="button">Tallenna resepti</button> 
+        </form>
+
+
+    </body>
+
+</html>

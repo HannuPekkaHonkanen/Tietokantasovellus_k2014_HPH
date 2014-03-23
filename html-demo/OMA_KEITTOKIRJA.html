@@ -5,25 +5,97 @@
         <title></title>
         <!--
               <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        -->    </head>
+        -->  
+        <link href="../css/bootstrap.css" rel="stylesheet">
+        <link href="../css/bootstrap-theme.css" rel="stylesheet">
+        <link href="../css/main.css" rel="stylesheet">      
+
+    </head>
     <body>
 
-        <form>
-            <button type="button">Kirjaudu ulos</button> 
-        </form>
-        <h1>OMA KEITTOKIRJA</h1>
+        <nav class="navbar navbar-default" role="navigation">
+            <div class="container-fluid">
+                <!-- Brand and toggle get grouped for better mobile display -->
+                <div class="navbar-header">
+                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+                        <span class="sr-only">Toggle navigation</span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                    <a class="navbar-brand" href="#">OMA KEITTOKIRJA</a>
+                </div>
 
+                <!-- Collect the nav links, forms, and other content for toggling -->
+                <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                    <ul class="nav navbar-nav">
+                        <li class="active"><a href="#">Aktiivinen linkki</a></li>
+                        <li><a href="#">Linkki</a></li>
+                        <!--
+                        <li class="dropdown">
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown">Dropdown <b class="caret"></b></a>
+                            <ul class="dropdown-menu">
+                                <li><a href="#">Action</a></li>
+                                <li><a href="#">Another action</a></li>
+                                <li><a href="#">Something else here</a></li>
+                                <li class="divider"></li>
+                                <li><a href="#">Separated link</a></li>
+                                <li class="divider"></li>
+                                <li><a href="#">One more separated link</a></li>
+                            </ul>
+                        </li>
+                        -->
+                    </ul>
+                    <form class="navbar-form navbar-left" role="search">
+                        <div class="form-group">
+                            <input type="text" class="form-control" placeholder="Ruokalaji/raaka-aine/ateriakokonaisuus">
+                        </div>
+                        <button type="submit" class="btn btn-default">Hae</button>
+                    </form>
+                    <ul class="nav navbar-nav navbar-right">
+                        <li><a href="#">Kirjaudu ulos</a></li>
+                        <!--
+                        <li class="dropdown">
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown">Dropdown <b class="caret"></b></a>
+                            <ul class="dropdown-menu">
+                                <li><a href="#">Action</a></li>
+                                <li><a href="#">Another action</a></li>
+                                <li><a href="#">Something else here</a></li>
+                                <li class="divider"></li>
+                                <li><a href="#">Separated link</a></li>
+                            </ul>
+                        </li>
+                        -->
+
+                    </ul>
+                </div><!-- /.navbar-collapse -->
+            </div><!-- /.container-fluid -->
+        </nav>
+
+        <!--
+                <form>
+                    <button type="button">Kirjaudu ulos</button> 
+                </form>
+                <h1>OMA KEITTOKIRJA</h1>
+        -->
         <p>Hannun OMA ultrahypersuosittujahienoElektroninenKeittokirja.</p>
 
         <form>
-            <button type="button">Lisää resepti</button> 
+            <INPUT Type="BUTTON" VALUE="Lisää resepti (tämä nappi toimii)" ONCLICK="window.location.href='http://hphonkan.users.cs.helsinki.fi/Tietokantasovellus_k2014_HPH/html-demo/LISAA_RESEPTI.html'">
         </form>
 
         <h4>Omat reseptit</h4>
         <ul>
             <li><a href="default.asp">Mokkapalat</a></li>
             <li><a href="default.asp">Kaurapuuro</a></li>
-            <li><a href="default.asp">Hääruoka EHKÄ KOKONAISUUDET OMAAN LISTAAN ???!!!</a></li>
+            <li><a href="http://hphonkan.users.cs.helsinki.fi/Tietokantasovellus_k2014_HPH/html-demo/KISSAKEITTO.html#">Kissakeitto (tämä linkki toimii)</a></li>
+        </ul>
+
+        <h4>Omat ateriakokonaisuudet</h4>
+        <ul>
+            <li><a href="default.asp">Hullut juomingit</a></li>
+            <li><a href="default.asp">Hiiren hautajaiset</a></li>
+            <li><a href="default.asp">Kissan kastejuhla</a></li>
         </ul>
 
     </body>

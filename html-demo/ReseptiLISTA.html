@@ -11,6 +11,7 @@
         <link href="../css/bootstrap-theme.css" rel="stylesheet">
         <link href="../css/main.css" rel="stylesheet">      
 
+
     </head>
     <body>
 
@@ -24,7 +25,7 @@
                         <span class="icon-bar"></span>
                         <span class="icon-bar"></span>
                     </button>
-                    <a class="navbar-brand" href="http://hphonkan.users.cs.helsinki.fi/Tietokantasovellus_k2014_HPH/html-demo/OMA_KEITTOKIRJA.html#">OMA KEITTOKIRJA (tämä linkki toimii)</a>
+                    <a class="navbar-brand" href="http://hphonkan.users.cs.helsinki.fi/Tietokantasovellus_k2014_HPH/html-demo/KEITTOKIRJA.html#">KEITTOKIRJA (tämä linkki toimii)</a>
                 </div>
 
                 <!-- Collect the nav links, forms, and other content for toggling -->
@@ -54,7 +55,8 @@
                         <button type="submit" class="btn btn-default">Hae</button>
                     </form>
                     <ul class="nav navbar-nav navbar-right">
-                        <li><a href="#">Kirjaudu ulos</a></li>
+                        <li><a href="#">Kirjaudu</a></li>
+                        <li><a href="#">Rekisteröidy</a></li>
                         <!--
                         <li class="dropdown">
                             <a href="#" class="dropdown-toggle" data-toggle="dropdown">Dropdown <b class="caret"></b></a>
@@ -72,75 +74,47 @@
                 </div><!-- /.navbar-collapse -->
             </div><!-- /.container-fluid -->
         </nav>
-        
-        
-        <h2>LISÄÄ RESEPTI</h2>
-
-        <form>
-            Reseptin nimi: <input type="text" name="reseptinNimi"><br>
-        </form>
-
-        <form>
-            Reseptin kuvaus (enintään 500 merkkiä): <input type="text" name="reseptinNimi"><br>
-        </form>
 
 
+        <div class="container">
+            <h1>Reseptilista (hakutulos)</h1>
+            <table class="table table-striped">
+                <thead>
+                    <tr>
+                        <th>#</th>
+                        <th>Resepti</th>
+                        <th>Tyyppi</th>
+                        <th>Pääraaka-aine</th>
+                        <th>Muokkaa (jos oma)</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
 
 
-        <h3>Raaka-aineet</h3>
 
-        <h4>Vaihe 1</h4><table>
-
-            <tr>
-                <td>sokeri</td>
-                <td><form>
-                        määrä: <input type="text" name="maara">
-                    </form></td>
-                <td>yksikkö:<select name="cars">
-                        <option value="kpl">kpl</option>
-                        <option value="dl">dl</option>
-                        <option value="g">g</option>
-                        <option value="rl">rl</option>
-                        <option value="tl">tl</option>
-                    </select></td>
-
-            </tr>
-
-            <tr>
-                <td>jauho</td>
-                <td><form>
-                        määrä: <input type="text" name="maara">
-                    </form></td>
-                <td>yksikkö:<select name="cars">
-                        <option value="kpl">kpl</option>
-                        <option value="dl">dl</option>
-                        <option value="g">g</option>
-                        <option value="rl">rl</option>
-                        <option value="tl">tl</option>
-                    </select></td>
-
-            </tr>
-
-        </table>
-
-        <hr>
-
-        <form name="input" action="html_form_action.asp" method="get">
-            <input type="text" name="user">
-            <input type="submit" value="Lisää vaihe">
-        </form> 
-
-        <form name="input" action="html_form_action.asp" method="get">
-            <input type="text" name="user">
-            <input type="submit" value="Lisää raaka-aine">
-        </form> 
-
-        <p>tyhjä tila....</p>
-        <form>
-            <button type="button">Tallenna resepti</button> 
-        </form>
-
-
-    </body>
-
-</html>
+                        <td>1</td>
+                        <td><A href="http://hphonkan.users.cs.helsinki.fi/Tietokantasovellus_k2014_HPH/html-demo/KISSAKEITTO.html#"> 
+                                Kissakeitto (tämä linkki toimii)</A></td>
+                        <td>Alkuruoka</td>
+                        <td>kissa</td>
+                        <td><button type="button" class="btn btn-xs btn-default"><span class="glyphicon glyphicon-edit"></span> Muokkaa</button></td>
+                    </tr>
+                    <tr>
+                        <td>2</td>
+                        <td>Kissalimu</td>
+                        <td>Juoma</td>
+                        <td>kissa</td>
+                        <td><button type="button" class="btn btn-xs btn-default"><span class="glyphicon glyphicon-edit"></span> Muokkaa</button></td>
+                    </tr>
+                    <tr>
+                        <td>3</td>
+                        <td>Kissamureke</td>
+                        <td>Pääruoka</td>
+                        <td>kissa</td>
+                        <td><button type="button" class="btn btn-xs btn-default"><span class="glyphicon glyphicon-edit"></span> Muokkaa</button></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </body></html>

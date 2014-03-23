@@ -5,13 +5,13 @@
         <title></title>
         <!--
               <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        --> 
-
+        -->
         <link href="../css/bootstrap.css" rel="stylesheet">
         <link href="../css/bootstrap-theme.css" rel="stylesheet">
         <link href="../css/main.css" rel="stylesheet">      
 
     </head>
+
     <body>
 
         <nav class="navbar navbar-default" role="navigation">
@@ -24,7 +24,7 @@
                         <span class="icon-bar"></span>
                         <span class="icon-bar"></span>
                     </button>
-                    <a class="navbar-brand" href="http://hphonkan.users.cs.helsinki.fi/Tietokantasovellus_k2014_HPH/html-demo/OMA_KEITTOKIRJA.html#">OMA KEITTOKIRJA (tämä linkki toimii)</a>
+                    <a class="navbar-brand" href="http://hphonkan.users.cs.helsinki.fi/Tietokantasovellus_k2014_HPH/html-demo/KEITTOKIRJA.html#">KEITTOKIRJA (tämä linkki toimii)</a>
                 </div>
 
                 <!-- Collect the nav links, forms, and other content for toggling -->
@@ -54,7 +54,8 @@
                         <button type="submit" class="btn btn-default">Hae</button>
                     </form>
                     <ul class="nav navbar-nav navbar-right">
-                        <li><a href="#">Kirjaudu ulos</a></li>
+                        <li><a href="#">Kirjaudu</a></li>
+                        <li><a href="#">Rekisteröidy</a></li>
                         <!--
                         <li class="dropdown">
                             <a href="#" class="dropdown-toggle" data-toggle="dropdown">Dropdown <b class="caret"></b></a>
@@ -72,75 +73,36 @@
                 </div><!-- /.navbar-collapse -->
             </div><!-- /.container-fluid -->
         </nav>
-        
-        
-        <h2>LISÄÄ RESEPTI</h2>
-
-        <form>
-            Reseptin nimi: <input type="text" name="reseptinNimi"><br>
-        </form>
-
-        <form>
-            Reseptin kuvaus (enintään 500 merkkiä): <input type="text" name="reseptinNimi"><br>
-        </form>
 
 
+        <p><h2>KISSAKEITTO (Tähän tullaan reseptilistan linkistä.)</h2>
+        Pohja<br>
+        1 dl sokeri<br>
+        2 dl vehnäjauho<br>
+        <br>
+        Kuorrutus<br>
+        1 dl sokeri<br>
+    </p>
 
+    <form>
+        <button type="button">Ostoslista</button>
+    </form>
 
-        <h3>Raaka-aineet</h3>
+    <p><h3>Tähän ilmestyy reseptistä muodostettu ostoslista</h3>
+    Pohja<br>
+    2 dl sokeri<br>
+    2 dl vehnäjauho<br>
+</p>
 
-        <h4>Vaihe 1</h4><table>
+<form>
+    <button type="button">Ravitsemustiedot</button> 
+</form>
 
-            <tr>
-                <td>sokeri</td>
-                <td><form>
-                        määrä: <input type="text" name="maara">
-                    </form></td>
-                <td>yksikkö:<select name="cars">
-                        <option value="kpl">kpl</option>
-                        <option value="dl">dl</option>
-                        <option value="g">g</option>
-                        <option value="rl">rl</option>
-                        <option value="tl">tl</option>
-                    </select></td>
+<p><h3>Tähän ilmestyy reseptistä muodostetut ravitsemustiedot</h3>
+80 g sokeri<br>
+100 g hiilihydraatti<br>
+20 g rasva<br>
+</p>
 
-            </tr>
-
-            <tr>
-                <td>jauho</td>
-                <td><form>
-                        määrä: <input type="text" name="maara">
-                    </form></td>
-                <td>yksikkö:<select name="cars">
-                        <option value="kpl">kpl</option>
-                        <option value="dl">dl</option>
-                        <option value="g">g</option>
-                        <option value="rl">rl</option>
-                        <option value="tl">tl</option>
-                    </select></td>
-
-            </tr>
-
-        </table>
-
-        <hr>
-
-        <form name="input" action="html_form_action.asp" method="get">
-            <input type="text" name="user">
-            <input type="submit" value="Lisää vaihe">
-        </form> 
-
-        <form name="input" action="html_form_action.asp" method="get">
-            <input type="text" name="user">
-            <input type="submit" value="Lisää raaka-aine">
-        </form> 
-
-        <p>tyhjä tila....</p>
-        <form>
-            <button type="button">Tallenna resepti</button> 
-        </form>
-
-
-    </body>
-
+</body>
 </html>

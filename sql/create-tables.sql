@@ -65,5 +65,4 @@ CREATE TABLE Maarat (
         foreign key (reseptiID) references Resepti,
         foreign key (raakaaineID) references Raakaaine,
         foreign key (reseptiID, vaihenumero) references Valmistusvaihe (reseptiID, jarjestysnumero)
---         foreign key () references Valmistusvaihe ()
 );

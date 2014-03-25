@@ -11,6 +11,6 @@ if ($kysely->execute()) {
   var_dump($kakkonen);
 }
 
-echo "Hei maailma!";
+//echo "Hei maailma!";
 
 ?>

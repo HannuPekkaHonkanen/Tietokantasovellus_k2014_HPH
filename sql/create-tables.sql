@@ -1,7 +1,7 @@
 CREATE TABLE Kayttaja (
 	kayttajatunnus varchar(30) not null primary key,
-	sahkoposti varchar(255) not null,
-	salasana varchar(30) not null
+	salasana varchar(30) not null,
+	sahkoposti varchar(255) not null
 );
 
 CREATE TABLE Resepti (

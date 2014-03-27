@@ -1,8 +1,8 @@
 <?php
 
 function naytaNakyma($sivu) {
-//    require 'views/pohja.php';
-        require $sivu;
+    require_once 'views/pohja.php';
+//    require 'views/'.$sivu;
     exit();
 }
 

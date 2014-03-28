@@ -1,17 +1,15 @@
 <?php
+echo "testisivu_001";
+
 
 require_once 'libs/common.php';
 $sivu = "kirjautumissivu.php";
 naytaNakyma($sivu);
 
-//$kayttaja = $_POST["username"];
-//$salasana = $_POST["password"];
-//
-//if (1==1) {
-//    header('Location: listaustesti.php');
-    
-    
+header('Location: listaustesti.php');
 
+
+//if (empty($_POST["username"]) || empty($_POST["password"])) {
 //    /* Käytetään omassa kirjastotiedostossa määriteltyä näkymännäyttöfunktioita */
 ////    $sivu2 = "HannunListatesti";
 ////    naytaNakyma($sivu2);

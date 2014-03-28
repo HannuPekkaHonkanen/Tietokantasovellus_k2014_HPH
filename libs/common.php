@@ -1,8 +1,10 @@
 <?php
 
-function naytaNakyma($sivu) {
-    require_once 'views/pohja.php';
-//    require 'views/'.$sivu;
+  function naytaNakyma($sivu, $data = array()) {
+//  function naytaNakyma($sivu) {
+    $data = (object)$data;
+//    require_once 'views/pohja.php';
+    require 'views/pohja.php';
     exit();
 }
 

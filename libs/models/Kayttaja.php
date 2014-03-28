@@ -17,27 +17,27 @@ class Kayttaja {
 
     /* Tähän gettereitä ja settereitä */
 
-    public function setKayttajatunnus($kayttajatunnus){
+    public function setKayttajatunnus($kayttajatunnus) {
         $this->kayttajatunnus = $kayttajatunnus;
     }
 
-    public function setSalasana($salasana){
+    public function setSalasana($salasana) {
         $this->salasana = $salasana;
     }
 
-    public function setSahkoposti($sahkoposti){
+    public function setSahkoposti($sahkoposti) {
         $this->sahkoposti = $sahkoposti;
     }
 
-    public function getKayttajatunnus(){
-        return $this->kayttajatunnus ;
+    public function getKayttajatunnus() {
+        return $this->kayttajatunnus;
     }
 
-    public function getSalasana(){
+    public function getSalasana() {
         return $this->salasana;
     }
 
-    public function getSahkoposti(){
+    public function getSahkoposti() {
         return $this->sahkoposti;
     }
 
@@ -53,12 +53,27 @@ class Kayttaja {
 //            $kayttaja->setId($tulos->kayttajatunnus);
 //            $kayttaja->setTunnus($tulos->salasana);
 //            $kayttaja->setSalanana($tulos->sahkoposti);
-
             //$array[] = $muuttuja; lisää muuttujan arrayn perään. 
             //Se vastaa melko suoraan ArrayList:in add-metodia.
             $tulokset[] = $kayttaja;
         }
         return $tulokset;
+    }
+
+    /* Etsitään kannasta käyttäjätunnuksella ja salasanalla käyttäjäriviä */
+
+    public static function etsiKayttajaTunnuksilla($kayttaja, $salasana) {
+        $sql = "SELECT kayttajatunnus, salasana from Kayttaja where kayttajatunnus = ? AND salasana = ? LIMIT 1";
+        $kysely = getTietokantayhteys()->prepare($sql);
+        $kysely->execute(array($kayttaja, $salasana));
+
+        $tulos = $kysely->fetchObject();
+        if ($tulos == null) {
+            return null;
+        } else {
+            $kayttaja = new Kayttaja($tulos->kayttajatunnus, $tulos->salasana, $tulos->sahkoposti);
+            return $kayttaja;
+        }
     }
 
 }

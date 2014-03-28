@@ -17,11 +17,13 @@ $salasana = $_POST["password"];
 $haettuKayttaja = Kayttaja::etsiKayttajaTunnuksilla($kayttaja, $salasana);
 
 /* Tarkistetaan onko parametrina saatu oikeat tunnukset */
-if ($haettuKayttaja == NULL) {
+if ($kayttaja == "Hannu" && $salasana == "hannu123") {
+    /* Jos tunnus on oikea, ohjataan käyttäjä sopivalla HTTP-otsakkeella eteenpain. */
+//    $tunnistettuKayttaja = Kayttaja::etsiKayttajaTunnuksilla($kayttaja, $salasana);
+    $_SESSION['kirjautunut'] = $tunnistettuKayttaja;
+    header('Location: listaustesti.php');
+} else {
     /* Väärän tunnuksen syöttänyt saa eteensä kirjautumislomakkeen. */
     $sivu = "kirjautumissivu.php";
     naytaNakyma($sivu);
-} else {
-    $_SESSION['kirjautunut'] = $haettuKayttaja->getKayttajatunnus();
-    header('Location: omallaSivulla.php');
 }

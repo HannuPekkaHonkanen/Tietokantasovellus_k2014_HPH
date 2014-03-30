@@ -19,9 +19,10 @@ $haettuKayttaja = Kayttaja::etsiKayttajaTunnuksilla($kayttaja, $salasana);
 /* Tarkistetaan onko parametrina saatu oikeat tunnukset */
 if ($haettuKayttaja == NULL) {
     /* Väärän tunnuksen syöttänyt saa eteensä kirjautumislomakkeen. */
+    echo 'väärät tunnukset';
     $sivu = "kirjautumissivu.php";
     naytaNakyma($sivu);
 } else {
     $_SESSION['kirjautunut'] = $haettuKayttaja->getKayttajatunnus();
-    header('Location: omallaSivulla.php');
+    header('Location: frontPage.php');
 }

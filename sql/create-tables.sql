@@ -1,6 +1,6 @@
 CREATE TABLE Kayttaja (
 	kayttajaID serial primary key,		
-	kayttajatunnus varchar(30) not null,
+	kayttajatunnus varchar(30) not null unique,
 	salasana varchar(30) not null,
 	sahkoposti varchar(255) not null
 );

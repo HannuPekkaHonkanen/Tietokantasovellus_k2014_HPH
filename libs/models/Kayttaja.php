@@ -70,6 +70,31 @@ class Kayttaja {
         return $tulokset;
     }
 
+    public static function getKayttajatSivulla($sivu, $montako) {
+//        $sql = "SELECT kayttajaid, kayttajatunnus, salasana, sahkoposti FROM Kayttaja ORDER BY kayttajatunnus";
+//        $sql = "SELECT kayttajaid, kayttajatunnus, salasana, sahkoposti FROM Kayttaja ORDER BY kayttajatunnus LIMIT 6 OFFSET 2";
+        $sql = "SELECT kayttajaid, kayttajatunnus, salasana, sahkoposti FROM Kayttaja ORDER BY kayttajatunnus LIMIT ? OFFSET ?";
+        $kysely = getTietokantayhteys()->prepare($sql);
+//        $kysely->execute();
+        $kysely->execute(array($montako, ($sivu - 1) * $montako));
+//        $xx=6;
+//        $yy=2;
+//        $kysely->execute(array($xx, $yy));
+
+        $tulokset = array();
+        foreach ($kysely->fetchAll(PDO::FETCH_OBJ) as $tulos) {
+            $kayttaja = new Kayttaja($tulos->kayttajaid, $tulos->kayttajatunnus, $tulos->salasana, $tulos->sahkoposti);
+//            $kayttaja = new Kayttaja();
+//            $kayttaja->setId($tulos->kayttajatunnus);
+//            $kayttaja->setTunnus($tulos->salasana);
+//            $kayttaja->setSalanana($tulos->sahkoposti);
+            //$array[] = $muuttuja; lisää muuttujan arrayn perään. 
+            //Se vastaa melko suoraan ArrayList:in add-metodia.
+            $tulokset[] = $kayttaja;
+        }
+        return $tulokset;
+    }
+
     /* Etsitään kannasta käyttäjätunnuksella ja salasanalla käyttäjäriviä */
 
     public static function etsiKayttajaTunnuksilla($kayttaja, $salasana) {
@@ -99,6 +124,13 @@ class Kayttaja {
             $kayttaja = new Kayttaja($tulos->kayttajaid, $tulos->kayttajatunnus, $tulos->salasana, $tulos->sahkoposti);
             return $kayttaja;
         }
+    }
+
+    public static function lukumaara() {
+        $sql = "SELECT count(*) FROM Kayttaja";
+        $kysely = getTietokantayhteys()->prepare($sql);
+        $kysely->execute();
+        return $kysely->fetchColumn();
     }
 
 }

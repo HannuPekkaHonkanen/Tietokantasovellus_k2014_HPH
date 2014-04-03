@@ -1,37 +1,39 @@
 CREATE TABLE Kayttaja (
-	kayttajatunnus varchar(30) not null primary key,
+	kayttajaID serial primary key,		
+	kayttajatunnus varchar(30) not null,
 	salasana varchar(30) not null,
 	sahkoposti varchar(255) not null
 );
 
 CREATE TABLE Resepti (
-	reseptiID varchar(20) not null primary key,		
+	reseptiID serial primary key,		
 	nimi varchar(100) not null,				
 	kuvaus varchar(500),				
 	raakaaineluokitus varchar(100) not null,				
 	kayttotilanneluokitus varchar(100) not null,				
 	annosmaara integer not null,				
 	kuva varchar(500),				
-	laatija varchar(30) not null,
-        foreign key (laatija) references Kayttaja
+-- 	laatija varchar(30) not null,
+        kayttajaID serial,
+        foreign key (kayttajaID) references Kayttaja
 );
 
 CREATE TABLE Ateriakokonaisuus (
-	ateriakokonaisuusID varchar(20) not null primary key,
+	ateriakokonaisuusID serial primary key,
 	nimi varchar(255) not null,
 	ohjeet varchar(500)
 );
 
 CREATE TABLE Ateriakokonaisuudet (
-	ateriakokonaisuusID varchar(20) not null,
-	reseptiID varchar(20) not null,
+	ateriakokonaisuusID serial,
+	reseptiID serial,
         primary key (ateriakokonaisuusID, reseptiID),
         foreign key (ateriakokonaisuusID) references Ateriakokonaisuus,
         foreign key (reseptiID) references Resepti
 );
 
 CREATE TABLE Raakaaine (
-        raakaaineID varchar(20) not null primary key,
+        raakaaineID serial primary key,
 	nimi varchar(100) not null,				
         yksikkohinta integer,
         energiaa integer,
@@ -46,7 +48,7 @@ CREATE TABLE Raakaaine (
 );
 
 CREATE TABLE Valmistusvaihe (
-        reseptiID varchar(20) not null,
+        reseptiID serial,
         jarjestysnumero integer not null,
         primary key (reseptiID, jarjestysnumero),
 	nimi varchar(100) not null,				
@@ -56,9 +58,9 @@ CREATE TABLE Valmistusvaihe (
 );
 
 CREATE TABLE Maarat (
-        reseptiID varchar(20) not null,
+        reseptiID serial,
         vaihenumero integer not null,
-        raakaaineID varchar(20) not null,
+        raakaaineID serial,
         primary key (reseptiID, vaihenumero, raakaaineID),
         maara integer not null,
         mittayksikko varchar(20) not null,

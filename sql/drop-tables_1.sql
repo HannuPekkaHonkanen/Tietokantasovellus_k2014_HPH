@@ -1,8 +1,0 @@
-DROP TABLE Raakaaine CASCADE
-\g
-DROP TABLE Ateriakokonaisuus CASCADE
-\g
-DROP TABLE Kayttaja CASCADE
-\g
-DROP TABLE Resepti CASCADE
-\g

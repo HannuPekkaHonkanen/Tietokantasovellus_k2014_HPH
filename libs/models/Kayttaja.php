@@ -2,11 +2,13 @@
 
 class Kayttaja {
 
+    private $kayttajaID;
     private $kayttajatunnus;
     private $salasana;
     private $sahkoposti;
 
-    public function __construct($kayttajatunnus, $salasana, $sahkoposti) {
+    public function __construct($kayttajaID, $kayttajatunnus, $salasana, $sahkoposti) {
+        $this->kayttajaID = $kayttajaID;
         $this->kayttajatunnus = $kayttajatunnus;
         $this->salasana = $salasana;
         $this->sahkoposti = $sahkoposti;
@@ -16,6 +18,10 @@ class Kayttaja {
 //    }
 
     /* Tähän gettereitä ja settereitä */
+
+    public function setKayttajaID($kayttajaID) {
+        $this->kayttajaID = $kayttajaID;
+    }
 
     public function setKayttajatunnus($kayttajatunnus) {
         $this->kayttajatunnus = $kayttajatunnus;
@@ -27,6 +33,10 @@ class Kayttaja {
 
     public function setSahkoposti($sahkoposti) {
         $this->sahkoposti = $sahkoposti;
+    }
+
+    public function getKayttajaID() {
+        return $this->kayttajaID;
     }
 
     public function getKayttajatunnus() {
@@ -42,13 +52,13 @@ class Kayttaja {
     }
 
     public static function getKayttajat() {
-        $sql = "SELECT kayttajatunnus, salasana, sahkoposti FROM Kayttaja";
+        $sql = "SELECT kayttajaid, kayttajatunnus, salasana, sahkoposti FROM Kayttaja ORDER BY kayttajatunnus";
         $kysely = getTietokantayhteys()->prepare($sql);
         $kysely->execute();
 
         $tulokset = array();
         foreach ($kysely->fetchAll(PDO::FETCH_OBJ) as $tulos) {
-            $kayttaja = new Kayttaja($tulos->kayttajatunnus, $tulos->salasana, $tulos->sahkoposti);
+            $kayttaja = new Kayttaja($tulos->kayttajaid, $tulos->kayttajatunnus, $tulos->salasana, $tulos->sahkoposti);
 //            $kayttaja = new Kayttaja();
 //            $kayttaja->setId($tulos->kayttajatunnus);
 //            $kayttaja->setTunnus($tulos->salasana);
@@ -63,7 +73,7 @@ class Kayttaja {
     /* Etsitään kannasta käyttäjätunnuksella ja salasanalla käyttäjäriviä */
 
     public static function etsiKayttajaTunnuksilla($kayttaja, $salasana) {
-        $sql = "SELECT kayttajatunnus, salasana from Kayttaja where kayttajatunnus = ? AND salasana = ? LIMIT 1";
+        $sql = "SELECT kayttajaID, kayttajatunnus, salasana, sahkoposti from Kayttaja where kayttajatunnus = ? AND salasana = ? LIMIT 1";
         $kysely = getTietokantayhteys()->prepare($sql);
         $kysely->execute(array($kayttaja, $salasana));
 
@@ -71,7 +81,22 @@ class Kayttaja {
         if ($tulos == null) {
             return null;
         } else {
-            $kayttaja = new Kayttaja($tulos->kayttajatunnus, $tulos->salasana, $tulos->sahkoposti);
+            $kayttaja = new Kayttaja($tulos->kayttajaID, $tulos->kayttajatunnus, $tulos->salasana, $tulos->sahkoposti);
+            return $kayttaja;
+        }
+    }
+
+    public static function etsiKayttajaIDlla($id) {
+        $sql = "SELECT kayttajaid, kayttajatunnus, salasana, sahkoposti from Kayttaja where kayttajaid = ?";
+        $kysely = getTietokantayhteys()->prepare($sql);
+        $kysely->execute(array($id));
+
+        $tulos = $kysely->fetchObject();
+        if ($tulos == null) {
+            echo "null";
+            return null;
+        } else {
+            $kayttaja = new Kayttaja($tulos->kayttajaid, $tulos->kayttajatunnus, $tulos->salasana, $tulos->sahkoposti);
             return $kayttaja;
         }
     }

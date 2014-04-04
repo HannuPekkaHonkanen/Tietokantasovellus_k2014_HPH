@@ -133,4 +133,17 @@ class Kayttaja {
         return $kysely->fetchColumn();
     }
 
+    public function lisaaKantaan() {
+        $sql = "INSERT INTO INSERT INTO Kayttaja (kayttajatunnus, salasana, sahkoposti) VALUES(?,?,?) RETURNING id";
+        $kysely = getTietokantayhteys()->prepare($sql);
+
+        $ok = $kysely->execute(array($this->getKayttajatunnus(), $this->getSalasana(), $this->getSahkoposti()));
+        if ($ok) {
+            //Haetaan RETURNING-määreen palauttama id.
+            //HUOM! Tämä toimii ainoastaan PostgreSQL-kannalla!
+            $this->id = $kysely->fetchColumn();
+        }
+        return $ok;
+    }
+
 }

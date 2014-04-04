@@ -23,7 +23,7 @@
         </tbody>
     </table>
 
-    <?php if ($data->sivunro > 0){ ?>
+    <?php if ($data->sivunro > 1){ ?>
     <?php // if (1==1){ ?>
         <A href="listUsernames.php?sivunro=<?php echo $data->sivunro - 1; ?>">Edellinen sivu</A>
     <?php } ?>

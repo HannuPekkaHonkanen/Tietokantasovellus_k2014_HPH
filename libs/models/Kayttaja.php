@@ -7,15 +7,16 @@ class Kayttaja {
     private $salasana;
     private $sahkoposti;
 
-    public function __construct($kayttajaID, $kayttajatunnus, $salasana, $sahkoposti) {
-        $this->kayttajaID = $kayttajaID;
-        $this->kayttajatunnus = $kayttajatunnus;
-        $this->salasana = $salasana;
-        $this->sahkoposti = $sahkoposti;
-    }
-
-//    public function __construct() {
+//    public function __construct($kayttajaID, $kayttajatunnus, $salasana, $sahkoposti) {
+//        $this->kayttajaID = $kayttajaID;
+//        $this->kayttajatunnus = $kayttajatunnus;
+//        $this->salasana = $salasana;
+//        $this->sahkoposti = $sahkoposti;
 //    }
+
+    public function __construct() {
+        
+    }
 
     /* Tähän gettereitä ja settereitä */
 
@@ -58,11 +59,13 @@ class Kayttaja {
 
         $tulokset = array();
         foreach ($kysely->fetchAll(PDO::FETCH_OBJ) as $tulos) {
-            $kayttaja = new Kayttaja($tulos->kayttajaid, $tulos->kayttajatunnus, $tulos->salasana, $tulos->sahkoposti);
-//            $kayttaja = new Kayttaja();
-//            $kayttaja->setId($tulos->kayttajatunnus);
-//            $kayttaja->setTunnus($tulos->salasana);
-//            $kayttaja->setSalanana($tulos->sahkoposti);
+//            $kayttaja = new Kayttaja($tulos->kayttajaid, $tulos->kayttajatunnus, $tulos->salasana, $tulos->sahkoposti);
+            $kayttaja = new Kayttaja();
+            $kayttaja->setKayttajaID($tulos->kayttajaid);
+            $kayttaja->setKayttajatunnus($tulos->kayttajatunnus);
+            $kayttaja->setSalasana($tulos->salasana);
+            $kayttaja->setSahkoposti($tulos->sahkoposti);
+
             //$array[] = $muuttuja; lisää muuttujan arrayn perään. 
             //Se vastaa melko suoraan ArrayList:in add-metodia.
             $tulokset[] = $kayttaja;
@@ -83,11 +86,13 @@ class Kayttaja {
 
         $tulokset = array();
         foreach ($kysely->fetchAll(PDO::FETCH_OBJ) as $tulos) {
-            $kayttaja = new Kayttaja($tulos->kayttajaid, $tulos->kayttajatunnus, $tulos->salasana, $tulos->sahkoposti);
-//            $kayttaja = new Kayttaja();
-//            $kayttaja->setId($tulos->kayttajatunnus);
-//            $kayttaja->setTunnus($tulos->salasana);
-//            $kayttaja->setSalanana($tulos->sahkoposti);
+//            $kayttaja = new Kayttaja($tulos->kayttajaid, $tulos->kayttajatunnus, $tulos->salasana, $tulos->sahkoposti);
+            $kayttaja = new Kayttaja();
+            $kayttaja->setKayttajaID($tulos->kayttajaid);
+            $kayttaja->setKayttajatunnus($tulos->kayttajatunnus);
+            $kayttaja->setSalasana($tulos->salasana);
+            $kayttaja->setSahkoposti($tulos->sahkoposti);
+
             //$array[] = $muuttuja; lisää muuttujan arrayn perään. 
             //Se vastaa melko suoraan ArrayList:in add-metodia.
             $tulokset[] = $kayttaja;
@@ -106,7 +111,12 @@ class Kayttaja {
         if ($tulos == null) {
             return null;
         } else {
-            $kayttaja = new Kayttaja($tulos->kayttajaID, $tulos->kayttajatunnus, $tulos->salasana, $tulos->sahkoposti);
+//            $kayttaja = new Kayttaja($tulos->kayttajaid, $tulos->kayttajatunnus, $tulos->salasana, $tulos->sahkoposti);
+            $kayttaja = new Kayttaja();
+            $kayttaja->setKayttajaID($tulos->kayttajaid);
+            $kayttaja->setKayttajatunnus($tulos->kayttajatunnus);
+            $kayttaja->setSalasana($tulos->salasana);
+            $kayttaja->setSahkoposti($tulos->sahkoposti);
             return $kayttaja;
         }
     }
@@ -121,7 +131,12 @@ class Kayttaja {
             echo "null";
             return null;
         } else {
-            $kayttaja = new Kayttaja($tulos->kayttajaid, $tulos->kayttajatunnus, $tulos->salasana, $tulos->sahkoposti);
+//            $kayttaja = new Kayttaja($tulos->kayttajaid, $tulos->kayttajatunnus, $tulos->salasana, $tulos->sahkoposti);
+            $kayttaja = new Kayttaja();
+            $kayttaja->setKayttajaID($tulos->kayttajaid);
+            $kayttaja->setKayttajatunnus($tulos->kayttajatunnus);
+            $kayttaja->setSalasana($tulos->salasana);
+            $kayttaja->setSahkoposti($tulos->sahkoposti);
             return $kayttaja;
         }
     }
@@ -134,16 +149,85 @@ class Kayttaja {
     }
 
     public function lisaaKantaan() {
-        $sql = "INSERT INTO INSERT INTO Kayttaja (kayttajatunnus, salasana, sahkoposti) VALUES(?,?,?) RETURNING id";
+        echo 'lk-sfdasdasdasdg';
+//echo $this->kayttajatunnus;
+//        $sql = "INSERT INTO Kayttaja (kayttajaID, kayttajatunnus, salasana, sahkoposti) VALUES (?,?,?,?)";
+        $sql = "INSERT INTO Kayttaja (kayttajatunnus, salasana, sahkoposti) VALUES (?,?,?) RETURNING kayttajaid";
         $kysely = getTietokantayhteys()->prepare($sql);
-
+//        $kysely->execute(array($this->getKayttajaID(),$this->getKayttajatunnus(), $this->getSalasana(), $this->getSahkoposti()));
         $ok = $kysely->execute(array($this->getKayttajatunnus(), $this->getSalasana(), $this->getSahkoposti()));
-        if ($ok) {
-            //Haetaan RETURNING-määreen palauttama id.
-            //HUOM! Tämä toimii ainoastaan PostgreSQL-kannalla!
-            $this->id = $kysely->fetchColumn();
-        }
-        return $ok;
+//        $kysely->execute(array($this->getKayttajatunnus(), $this->getSalasana(), $this->getSahkoposti()));
+
+
+        echo'ok=';
+        echo $ok;
+//        echo '  fetchColumn()';
+//        echo $kysely->fetchColumn();
+        
+        //        $kysely->execute(array(19887,'h2s', 'hh2', 'hhh2'));
+//        $sql = "INSERT INTO INSERT INTO Kayttaja (kayttajaID,kayttajatunnus, salasana, sahkoposti) VALUES (1987,'h2', 'hh2', 'hhh2')";
+////        $sql = "INSERT INTO INSERT INTO Kayttaja (kayttajaID,kayttajatunnus, salasana, sahkoposti) VALUES (?,?,?,?)";
+//////        $sql = "INSERT INTO INSERT INTO Kayttaja (kayttajatunnus, salasana, sahkoposti) VALUES('h','hh','hhh') RETURNING kayttajaID";
+//        $kysely = getTietokantayhteys()->prepare($sql);
+////
+//////        $ok = $kysely->execute(array($this->getKayttajatunnus(), $this->getSalasana(), $this->getSahkoposti()));
+//////        $ok = $kysely->execute(array("h", "hh", "hhh"));
+//        $kysely->execute();
+////        $kysely->execute(array(1987,"h2", "hh2", "hhh2"));
+//////        if ($ok) {
+//////            //Haetaan RETURNING-määreen palauttama id.
+//////            //HUOM! Tämä toimii ainoastaan PostgreSQL-kannalla!
+            $this->kayttajaID = $kysely->fetchColumn();
+//////        }
+//////        return $ok;
+        echo ' id=';
+        echo $this->getKayttajaID();
+    }
+
+    public static function lisaaKantaan2() {
+        echo 'lk2-sfdasdasdasdg';
+
+        $sql = "INSERT INTO Kayttaja (kayttajaID, kayttajatunnus, salasana, sahkoposti) VALUES ('1103', 'Hannu1003', 'hannu123', 'hannu@hannu')";
+        $kysely = getTietokantayhteys()->prepare($sql);
+        $kysely->execute();
+
+//        $sql = "INSERT INTO INSERT INTO Kayttaja (kayttajatunnus, salasana, sahkoposti) VALUES(?,?,?) RETURNING id";
+////        $sql = "INSERT INTO INSERT INTO Kayttaja (kayttajatunnus, salasana, sahkoposti) VALUES('h','hh','hhh') RETURNING id";
+//        $kysely = getTietokantayhteys()->prepare($sql);
+//
+////        $ok = $kysely->execute(array($this->getKayttajatunnus(), $this->getSalasana(), $this->getSahkoposti()));
+//        $ok = $kysely->execute(array("h","hh","hhh"));
+//        if ($ok) {
+//            //Haetaan RETURNING-määreen palauttama id.
+//            //HUOM! Tämä toimii ainoastaan PostgreSQL-kannalla!
+//            $this->kayttajaID = $kysely->fetchColumn();
+//        }
+//        return $ok;
+    }
+
+    public function lisaaKantaan3() {
+        echo 'lk3-sfdasdasdasdg';
+
+//        $sql = "INSERT INTO Kayttaja (kayttajaID, kayttajatunnus, salasana, sahkoposti) VALUES ('999', 'Hannu999', 'hannu123', 'hannu@hannu')";
+////        $kysely = getTietokantayhteys()->prepare($sql);
+////        $kysely->execute();
+//        echo 'lk3-sfdasdasdasdg';
+//
+//        $sql = "INSERT INTO Kayttaja (kayttajaID, kayttajatunnus, salasana, sahkoposti) VALUES ($this->getKayttajaID(), $this->getKayttajatunnus(), $this->getSalasana(), $this->getSahkoposti())";
+        $sql = "INSERT INTO Kayttaja (kayttajaID, kayttajatunnus, salasana, sahkoposti) VALUES (?,?,?,?)";
+        $kysely = getTietokantayhteys()->prepare($sql);
+        $kysely->execute(array(11912, 'h19112', 'hh', 'hhh'));
+
+////
+        echo 'lk32-sfdasdasdasdg';
+//        $kysely->execute($this->getKayttajaID(), $this->getKayttajatunnus(), $this->getSalasana(), $this->getSahkoposti());
+////        $ok = $kysely->execute(array("h","hh","hhh"));
+////        if ($ok) {
+////            //Haetaan RETURNING-määreen palauttama id.
+////            //HUOM! Tämä toimii ainoastaan PostgreSQL-kannalla!
+////            $this->kayttajaID = $kysely->fetchColumn();
+////        }
+////        return $ok;
     }
 
 }

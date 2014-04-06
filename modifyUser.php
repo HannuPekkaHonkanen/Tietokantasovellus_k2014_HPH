@@ -12,16 +12,16 @@ if (onKirjautunut()) {
 //    $kayttaja=new Kayttaja();
 //    $kayttaja->setKayttajatunnus("jhjhjh");
     $kayttaja = Kayttaja::etsiKayttajaIDlla($kayttajaid);
-    echo 'kukkku';
-    $dfg = "kjh";
-    echo $dfg;
-    echo $kayttajaid;
-    $ksks = $kayttaja->getKayttajatunnus();
-    echo $ksks;
-    echo 'kukkku';
-    $sivu = "omaKeittokirja.php";
-    naytaNakyma($sivu);
-    echo 'kukkku';
+//    echo 'kukkku';
+//    $dfg = "kjh";
+//    echo $dfg;
+//    echo $kayttajaid;
+//    $ksks = $kayttaja->getKayttajatunnus();
+//    echo $ksks;
+//    echo 'kukkku';
+$sivu = "muokkaakayttajaasivu.php";
+naytaNakyma($sivu, array("kayttaja" => $kayttaja));
+//    echo 'kukkku';
 } else {
     echo 'et ole kirjautunut';
 }

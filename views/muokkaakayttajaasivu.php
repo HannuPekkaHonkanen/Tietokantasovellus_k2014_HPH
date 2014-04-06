@@ -1,9 +1,9 @@
 <div class="container">
 
     <!--<form class="form-signin" role="form" method="POST">-->
-    <form action="addUserHandler.php" method="POST">
+    <form action="modifyUserHandler.php" method="POST">
         <!--<h2 class="form-signin-heading">Ole hyvä ja kirjaudu sisään</h2>-->
-        <h2>Käyttäjän tiedot (kaikkea ei näytetä lopullisessa versiossa tai muokkaukseen vain muokkauslinkin kautta)</h2>
+        <h2>Ole hyvä ja muuta haluamasi tiedot</h2>
 <!--        <input type="text" name="username" class="form-control" placeholder="keittokirjaTunnuksesi" 
 autofocus/>
         <input type="password" name="password" class="form-control" placeholder="salasana" />-->

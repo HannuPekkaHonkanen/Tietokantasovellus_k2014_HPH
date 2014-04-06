@@ -163,7 +163,6 @@ class Kayttaja {
         echo $ok;
 //        echo '  fetchColumn()';
 //        echo $kysely->fetchColumn();
-        
         //        $kysely->execute(array(19887,'h2s', 'hh2', 'hhh2'));
 //        $sql = "INSERT INTO INSERT INTO Kayttaja (kayttajaID,kayttajatunnus, salasana, sahkoposti) VALUES (1987,'h2', 'hh2', 'hhh2')";
 ////        $sql = "INSERT INTO INSERT INTO Kayttaja (kayttajaID,kayttajatunnus, salasana, sahkoposti) VALUES (?,?,?,?)";
@@ -177,7 +176,7 @@ class Kayttaja {
 //////        if ($ok) {
 //////            //Haetaan RETURNING-määreen palauttama id.
 //////            //HUOM! Tämä toimii ainoastaan PostgreSQL-kannalla!
-            $this->kayttajaID = $kysely->fetchColumn();
+        $this->kayttajaID = $kysely->fetchColumn();
 //////        }
 //////        return $ok;
         echo ' id=';
@@ -228,6 +227,24 @@ class Kayttaja {
 ////            $this->kayttajaID = $kysely->fetchColumn();
 ////        }
 ////        return $ok;
+    }
+
+    public function muokkaa() {
+        $sql = "UPDATE Kayttaja SET kayttajatunnus =?, salasana=?, sahkoposti=? WHERE kayttajaid=?";
+        $kysely = getTietokantayhteys()->prepare($sql);
+        $ok = $kysely->execute(array($this->getKayttajatunnus(), $this->getSalasana(), $this->getSahkoposti(), $this->getKayttajaID()));
+        echo 'testing face info ';
+        echo 'MUOKATUN KÄYTTÄJÄN TUNNUS=';
+        echo $this->getKayttajatunnus();
+    }
+
+    public function poista() {
+        echo 'testing face info ';
+        echo 'POISTETETTAVAN KÄYTTÄJÄN TUNNUS=';
+        echo $this->getKayttajatunnus();
+        $sql = "DELETE FROM Kayttaja WHERE kayttajaid=?";
+        $kysely = getTietokantayhteys()->prepare($sql);
+        $ok = $kysely->execute(array($this->getKayttajaID()));
     }
 
 }

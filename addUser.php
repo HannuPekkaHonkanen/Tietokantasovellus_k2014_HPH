@@ -14,3 +14,4 @@ $uusiKayttaja->setSahkoposti("testin");
 //naytaNakyma($sivu);
 //naytaNakyma($sivu, array("kayttaja" => "XXX"));
 naytaNakyma($sivu, array("kayttaja" => $uusiKayttaja));
+

@@ -11,8 +11,8 @@ function naytaNakyma($sivu, $data = array()) {
 }
 
 function onKirjautunut() {
-    if (isset($_SESSION['kirjautunut'])) {
-        $kayttaja = $_SESSION['kirjautunut'];
+    if (isset($_SESSION["kirjautunutid"])) {
+//        $kayttaja = $_SESSION['kirjautunut'];
     return TRUE;
     }
     return FALSE;

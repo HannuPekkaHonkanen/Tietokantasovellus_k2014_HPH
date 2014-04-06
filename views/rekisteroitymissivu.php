@@ -3,7 +3,7 @@
     <!--<form class="form-signin" role="form" method="POST">-->
     <form action="addUserHandler.php" method="POST">
         <!--<h2 class="form-signin-heading">Ole hyvä ja kirjaudu sisään</h2>-->
-        <h2>Ole hyvä anna tiedot rekisteröitymistäsi varten</h2>
+        <h2>Ole hyvä ja anna tiedot rekisteröitymistäsi varten</h2>
 <!--        <input type="text" name="username" class="form-control" placeholder="keittokirjaTunnuksesi" 
 autofocus/>
         <input type="password" name="password" class="form-control" placeholder="salasana" />-->

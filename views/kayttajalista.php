@@ -33,5 +33,6 @@
     <?php } ?>
 
     Yhteensä <?php echo $kayttaja::lukumaara() ?> käyttäjää.
+    Olet sivulla <?php echo $data->sivunro; ?>/<?php echo $data->sivuja; ?>.
 </div>
 

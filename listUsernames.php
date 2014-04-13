@@ -15,7 +15,7 @@ if (isset($_GET["sivunro"])) {
 }
 //$sivunumero = 2;
 
-$montakokayttajaasivulla = 5;
+$montakokayttajaasivulla = 10;
 
 //Lista asioista array-tietotyyppiin laitettuna:
 $lista = Kayttaja::getKayttajatSivulla($sivunumero, $montakokayttajaasivulla);

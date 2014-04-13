@@ -1,16 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project-private xmlns="http://www.netbeans.org/ns/project-private/1">
-    <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
-    <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/1">
-        <file>file:/C:/Users/Hannu/Tietokantasovellus_k2014_HPH/libs/models/Kayttaja.php</file>
-        <file>file:/C:/Users/Hannu/Tietokantasovellus_k2014_HPH/testlisaakantaan2.php</file>
-        <file>file:/C:/Users/Hannu/Tietokantasovellus_k2014_HPH/testlisaakantaan3.php</file>
-        <file>file:/C:/Users/Hannu/Tietokantasovellus_k2014_HPH/addUser.php</file>
-        <file>file:/C:/Users/Hannu/Tietokantasovellus_k2014_HPH/views/rekisteroitymissivu.php</file>
-        <file>file:/C:/Users/Hannu/Tietokantasovellus_k2014_HPH/addUserHandler.php</file>
-        <file>file:/C:/Users/Hannu/Tietokantasovellus_k2014_HPH/views/kayttajalista.php</file>
-        <file>file:/C:/Users/Hannu/Tietokantasovellus_k2014_HPH/listUsernames.php</file>
-        <file>file:/C:/Users/Hannu/Tietokantasovellus_k2014_HPH/views/kirjautumissivu.php</file>
-        <file>file:/C:/Users/Hannu/Tietokantasovellus_k2014_HPH/loginHandler.php</file>
-    </open-files>
+    <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="1">
+        <file>
+            <url>user.php</url>
+            <bookmark id="1">
+                <name/>
+                <line>0</line>
+                <key/>
+            </bookmark>
+        </file>
+    </editor-bookmarks>
 </project-private>

@@ -105,7 +105,7 @@ class Kayttaja {
     public static function etsiKayttajaTunnuksilla($kayttaja, $salasana) {
         $sql = "SELECT kayttajaID, kayttajatunnus, salasana, sahkoposti from Kayttaja where kayttajatunnus = ? AND salasana = ? LIMIT 1";
         $kysely = getTietokantayhteys()->prepare($sql);
-        $kysely->execute(array($kayttaja, $salasana));
+        $kysely->execute(array(htmlspecialchars($kayttaja), htmlspecialchars($salasana)));
 
         $tulos = $kysely->fetchObject();
         if ($tulos == null) {
@@ -155,7 +155,8 @@ class Kayttaja {
         $sql = "INSERT INTO Kayttaja (kayttajatunnus, salasana, sahkoposti) VALUES (?,?,?) RETURNING kayttajaid";
         $kysely = getTietokantayhteys()->prepare($sql);
 //        $kysely->execute(array($this->getKayttajaID(),$this->getKayttajatunnus(), $this->getSalasana(), $this->getSahkoposti()));
-        $ok = $kysely->execute(array($this->getKayttajatunnus(), $this->getSalasana(), $this->getSahkoposti()));
+//        $ok = $kysely->execute(array($this->getKayttajatunnus(), $this->getSalasana(), $this->getSahkoposti()));
+        $ok = $kysely->execute(array(htmlspecialchars($this->getKayttajatunnus()), htmlspecialchars($this->getSalasana()), htmlspecialchars($this->getSahkoposti())));
 //        $kysely->execute(array($this->getKayttajatunnus(), $this->getSalasana(), $this->getSahkoposti()));
 
 
@@ -232,10 +233,11 @@ class Kayttaja {
     public function muokkaa() {
         $sql = "UPDATE Kayttaja SET kayttajatunnus =?, salasana=?, sahkoposti=? WHERE kayttajaid=?";
         $kysely = getTietokantayhteys()->prepare($sql);
-        $ok = $kysely->execute(array($this->getKayttajatunnus(), $this->getSalasana(), $this->getSahkoposti(), $this->getKayttajaID()));
+        $ok = $kysely->execute(array(htmlspecialchars($this->getKayttajatunnus()), htmlspecialchars($this->getSalasana()), htmlspecialchars($this->getSahkoposti()), $this->getKayttajaID()));
+//        $ok = $kysely->execute(array($this->getKayttajatunnus(), $this->getSalasana(), $this->getSahkoposti(), $this->getKayttajaID()));
         echo 'testing face info ';
         echo 'MUOKATUN KÄYTTÄJÄN TUNNUS=';
-        echo $this->getKayttajatunnus();
+        echo htmlspecialchars($this->getKayttajatunnus());
     }
 
     public function poista() {

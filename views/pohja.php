@@ -61,11 +61,14 @@
                         <button type="submit" class="btn btn-default">Hae</button>
                     </form>
                     <ul class="nav navbar-nav navbar-right">
-                        <li><a href="addUser.php#">Rekisteröidy</a></li>
-                        <li><a href="login.php#">Kirjaudu sisään</a></li>
-                        <li><a href="logout.php#">Kirjaudu ulos</a></li>
-                        <li><a href="modifyUser.php#">Muokkaa tietojasi</a></li>
-                        <li><a href="deleteUser.php#">Poista tunnuksesi</a></li>
+                        <?php if (onKirjautunut()) { ?>
+                            <li><a href="logout.php#">Kirjaudu ulos</a></li>
+                            <li><a href="modifyUser.php#">Muokkaa tietojasi</a></li>
+                            <li><a href="deleteUser.php#">Poista tunnuksesi</a></li>
+                        <?php } else { ?>
+                            <li><a href="addUser.php#">Rekisteröidy</a></li>
+                            <li><a href="login.php#">Kirjaudu sisään</a></li>
+                        <?php } ?>
                         <!--
                         <li class="dropdown">
                             <a href="#" class="dropdown-toggle" data-toggle="dropdown">Dropdown <b class="caret"></b></a>

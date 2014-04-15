@@ -1,12 +1,12 @@
 CREATE TABLE Kayttaja (
-	kayttajaID serial primary key,		
+	kayttajaid serial primary key,		
 	kayttajatunnus varchar(30) not null unique,
 	salasana varchar(30) not null,
 	sahkoposti varchar(255) not null
 );
 
 CREATE TABLE Resepti (
-	reseptiID serial primary key,		
+	reseptiid serial primary key,		
 	nimi varchar(100) not null,				
 	kuvaus varchar(500),				
 	raakaaineluokitus varchar(100) not null,				
@@ -14,28 +14,30 @@ CREATE TABLE Resepti (
 	annosmaara integer not null,				
 	kuva varchar(500),				
 -- 	laatija varchar(30) not null,
-        kayttajaID serial,
-        foreign key (kayttajaID) references Kayttaja
+        kayttajaid serial,
+        foreign key (kayttajaid) references Kayttaja
 );
 
 CREATE TABLE Ateriakokonaisuus (
-	ateriakokonaisuusID serial primary key,
+	ateriakokonaisuusid serial primary key,
 	nimi varchar(255) not null,
 	ohjeet varchar(500)
 );
 
 CREATE TABLE Ateriakokonaisuudet (
-	ateriakokonaisuusID serial,
-	reseptiID serial,
-        primary key (ateriakokonaisuusID, reseptiID),
-        foreign key (ateriakokonaisuusID) references Ateriakokonaisuus,
-        foreign key (reseptiID) references Resepti
+	ateriakokonaisuusid serial,
+	reseptiid serial,
+        primary key (ateriakokonaisuusid, reseptiid),
+        foreign key (ateriakokonaisuusid) references Ateriakokonaisuus,
+        foreign key (reseptiid) references Resepti
 );
 
 CREATE TABLE Raakaaine (
-        raakaaineID serial primary key,
-	nimi varchar(100) not null,				
+        raakaaineid serial primary key,
+	nimi varchar(100) not null unique,				
         yksikkohinta integer,
+        tilavuuspaino integer,
+        kappalepaino integer,
         energiaa integer,
         proteiinia integer,
         hyvaaRasvaa integer,
@@ -48,23 +50,23 @@ CREATE TABLE Raakaaine (
 );
 
 CREATE TABLE Valmistusvaihe (
-        reseptiID serial,
+        reseptiid serial,
         jarjestysnumero integer not null,
-        primary key (reseptiID, jarjestysnumero),
+        primary key (reseptiid, jarjestysnumero),
 	nimi varchar(100) not null,				
 	ohjeet varchar(500),
 	kuva varchar(500),
-        foreign key (reseptiID) references Resepti				
+        foreign key (reseptiid) references Resepti				
 );
 
 CREATE TABLE Maarat (
-        reseptiID serial,
+        reseptiid serial,
         vaihenumero integer not null,
-        raakaaineID serial,
-        primary key (reseptiID, vaihenumero, raakaaineID),
+        raakaaineid serial,
+        primary key (reseptiid, vaihenumero, raakaaineid),
         maara integer not null,
         mittayksikko varchar(20) not null,
-        foreign key (reseptiID) references Resepti,
-        foreign key (raakaaineID) references Raakaaine,
-        foreign key (reseptiID, vaihenumero) references Valmistusvaihe (reseptiID, jarjestysnumero)
+        foreign key (reseptiid) references Resepti,
+        foreign key (raakaaineid) references Raakaaine,
+        foreign key (reseptiid, vaihenumero) references Valmistusvaihe (reseptiid, jarjestysnumero)
 );

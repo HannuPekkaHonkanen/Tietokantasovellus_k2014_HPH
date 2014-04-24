@@ -7,7 +7,7 @@ require_once "libs/models/Raakaaine.php";
 $uusiRaakaaine = new Raakaaine();
 
 $uusiRaakaaine->setNimi($_POST["name"]);
-$uusiRaakaaine->lisaaKantaanNimella();
+$uusiRaakaaine->lisaaKantaan();
 
 if ($_POST["unitprice"] != "") {
     $uusiRaakaaine->setYksikkohinta($_POST["unitprice"]);

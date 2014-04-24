@@ -10,7 +10,7 @@ $uusiKayttaja = new Kayttaja();
 $uusiKayttaja->setKayttajatunnus($_POST["username"]);
 $uusiKayttaja->setSalasana($_POST["password"]);
 $uusiKayttaja->setSahkoposti($_POST["email"]);
-$uusiKayttaja->lisaaKantaanNimella();
+$uusiKayttaja->lisaaKantaan();
 
 
 

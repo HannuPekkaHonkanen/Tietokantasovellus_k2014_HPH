@@ -127,7 +127,7 @@ class Kayttaja {
         return $kysely->fetchColumn();
     }
 
-    public function lisaaKantaanNimella() {
+    public function lisaaKantaan() {
         $sql = "INSERT INTO kayttaja (kayttajatunnus, salasana, sahkoposti) VALUES (?,?,?) RETURNING kayttajaid";
         $kysely = getTietokantayhteys()->prepare($sql);
         $ok = $kysely->execute(array(htmlspecialchars($this->getKayttajatunnus()), htmlspecialchars($this->getSalasana()), htmlspecialchars($this->getSahkoposti())));

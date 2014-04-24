@@ -132,7 +132,7 @@ class Raakaaine {
         return $this->suolaa;
     }
 
-    public function lisaaKantaanNimella() {
+    public function lisaaKantaan() {
         $sql = "INSERT INTO raakaaine (nimi, yksikkohinta) VALUES (?,NULL) RETURNING raakaaineid";
         $kysely = getTietokantayhteys()->prepare($sql);
         $ok = $kysely->execute(array(htmlspecialchars($this->getNimi())));

@@ -2,7 +2,6 @@ INSERT INTO kayttaja (kayttajaid, kayttajatunnus, salasana, sahkoposti) VALUES (
 INSERT INTO kayttaja (kayttajaid, kayttajatunnus, salasana, sahkoposti) VALUES ('1', 'Hannu', 'hannu123', 'hannu@hannu');
 INSERT INTO kayttaja (kayttajaid, kayttajatunnus, salasana, sahkoposti) VALUES ('2', 'Hannu2', 'hannu2123', 'hannu2@hannu');
 INSERT INTO kayttaja (kayttajaid, kayttajatunnus, salasana, sahkoposti) VALUES ('3', 'Kerttu', 'kerttu123', 'kerttu@hannu');
-INSERT INTO resepti (reseptiid, nimi, raakaaineluokitus ,kayttotilanneluokitus, annosmaara, kayttajaid) VALUES ('1', 'kissapata', 'kissa', 'paaruoka', 10, '2');
 INSERT INTO kayttaja (kayttajaid, kayttajatunnus, salasana, sahkoposti) VALUES ('11', 'Hannu11', 'hannu123', 'hannu@hannu');
 INSERT INTO kayttaja (kayttajaid, kayttajatunnus, salasana, sahkoposti) VALUES ('12', 'Hannu12', 'hannu123', 'hannu@hannu');
 INSERT INTO kayttaja (kayttajaid, kayttajatunnus, salasana, sahkoposti) VALUES ('13', 'Hannu13', 'hannu123', 'hannu@hannu');
@@ -22,3 +21,12 @@ INSERT INTO kayttaja (kayttajaid, kayttajatunnus, salasana, sahkoposti) VALUES (
 INSERT INTO kayttaja (kayttajaid, kayttajatunnus, salasana, sahkoposti) VALUES ('27', 'Hannu27', 'hannu123', 'hannu@hannu');
 INSERT INTO kayttaja (kayttajaid, kayttajatunnus, salasana, sahkoposti) VALUES ('28', 'Hannu28', 'hannu123', 'hannu@hannu');
 INSERT INTO kayttaja (kayttajaid, kayttajatunnus, salasana, sahkoposti) VALUES ('29', 'Hannu29', 'hannu123', 'hannu@hannu');
+INSERT INTO resepti (reseptiid, nimi, raakaaineluokitus ,kayttotilanneluokitus, annosmaara, kayttajaid) VALUES ('1', 'kissapata', 'kissa', 'Pääruoka', 10, 2);
+INSERT INTO resepti (reseptiid, nimi, raakaaineluokitus ,kayttotilanneluokitus, annosmaara, kayttajaid) VALUES ('2', 'kissapata2', 'kissa', 'Pääruoka', 10, 2);
+INSERT INTO resepti (reseptiid, nimi, raakaaineluokitus ,kayttotilanneluokitus, annosmaara, kayttajaid) VALUES ('3', 'kissapata3', 'kissa', 'Pääruoka', 1, 2);
+INSERT INTO resepti (reseptiid, nimi, raakaaineluokitus ,kayttotilanneluokitus, annosmaara, kayttajaid) VALUES ('10', 'kissapata10', 'kissa', 'Pääruoka', 1, 2);
+INSERT INTO resepti (reseptiid, nimi, raakaaineluokitus ,kayttotilanneluokitus, annosmaara, kayttajaid) VALUES ('11', 'kissapata11', 'kissa', 'Pääruoka', 1000, 29);
+INSERT INTO valmistusvaihe (reseptiid, jarjestysnumero, nimi, ohjeet, kuva) VALUES (1, 1, 'kissan paistaminen', 'paista kissa pannulla', 'http://img.avatv.fi/mn_kuvat/mtv3/helmi/minisaitit/kapalakerho/kissat/2012/03/1356549.jpg');
+INSERT INTO valmistusvaihe (reseptiid, jarjestysnumero, nimi, ohjeet, kuva) VALUES (1, 2, 'kissan paistaminen2', 'paista kissa pannulla', 'http://img.avatv.fi/mn_kuvat/mtv3/helmi/minisaitit/kapalakerho/kissat/2012/03/1356549.jpg');
+INSERT INTO valmistusvaihe (reseptiid, jarjestysnumero, nimi, ohjeet, kuva) VALUES (1, 3, 'kissan paistaminen3', 'paista kissa pannulla', 'http://img.avatv.fi/mn_kuvat/mtv3/helmi/minisaitit/kapalakerho/kissat/2012/03/1356549.jpg');
+INSERT INTO valmistusvaihe (reseptiid, jarjestysnumero, nimi, ohjeet, kuva) VALUES (1, 4, 'kissan paistaminen4', 'paista kissa pannulla', 'http://img.avatv.fi/mn_kuvat/mtv3/helmi/minisaitit/kapalakerho/kissat/2012/03/1356549.jpg');

@@ -37,7 +37,9 @@
                 <!-- Collect the nav links, forms, and other content for toggling -->
                 <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                     <ul class="nav navbar-nav">
-                        <li class="active"><a href="#">Aktiivinen linkki</a></li>
+                        <?php if (onKirjautunut()) { ?>
+                        <li class="active"><a href="addRecipe.php#">Lisää resepti</a></li>
+                        <?php } ?>
                         <li><a href="#">Linkki</a></li>
                         <!--
                         <li class="dropdown">
@@ -88,6 +90,12 @@
         </nav>
 
         <div id="content">
+
+           <?php if (isset($_SESSION["ilmoitus"])){
+               echo $_SESSION["ilmoitus"];
+               echo "<br><br>";
+               unset($_SESSION["ilmoitus"]);
+           }?>
 
             <?php require $sivu; ?>
 

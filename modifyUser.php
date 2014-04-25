@@ -9,5 +9,5 @@ if (onKirjautunut()) {
 $sivu = "muokkaakayttajaasivu.php";
 naytaNakyma($sivu, array("kayttaja" => $kayttaja));
 } else {
-    echo 'et ole kirjautunut';
+    echo 'TODO et ole kirjautunut';
 }

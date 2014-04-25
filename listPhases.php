@@ -25,7 +25,7 @@ $lista = Valmistusvaihe::haeVaiheetReseptiIDlla($reseptiID);
 if ($lista == NULL) {
     /* Tästä voisi ohjata sopivalle sivulle. TODO */
 //    header('Location: frontPage.php');
-    echo 'hakutulos tyhjä';
+    echo "TODO hakutulos tyhjä";
 } else {
     $sivu = "vaihelista.php";
     naytaNakyma($sivu, array("vaiheet" => $lista, "reseptiID" => $reseptiID));

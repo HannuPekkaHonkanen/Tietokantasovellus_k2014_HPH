@@ -53,16 +53,16 @@ class Valmistusvaihe {
     }
 
     public function getVirheet() {
-//        return $this->virheet["annosmaara"]+$this->virheet["nimi"];
+//        TODO return $this->virheet["annosmaara"]+$this->virheet["nimi"];
         return $this->virheet;
     }
 
-//    public function lisaaKantaan() {
-//        $sql = "INSERT INTO valmistusvaihe (nimi, kuvaus, raakaaineluokitus ,kayttotilanneluokitus, annosmaara, kayttajaid) VALUES (?,?,?,?,?,?) RETURNING reseptiid";
-//        $kysely = getTietokantayhteys()->prepare($sql);
-//        $ok = $kysely->execute(array(htmlspecialchars($this->getNimi()), htmlspecialchars($this->getKuvaus()), htmlspecialchars($this->getRaakaaineluokitus()), htmlspecialchars($this->getKayttotilanneluokitus()), htmlspecialchars($this->getAnnosmaara()), htmlspecialchars($this->kayttajaID)));
-//        $this->reseptiID = $kysely->fetchColumn();
-//    }
+    public function lisaaKantaan() {
+        $sql = "INSERT INTO valmistusvaihe (reseptiid, nimi, ohjeet, kuva) VALUES (?,?,?,?) RETURNING jarjestysnumero";
+        $kysely = getTietokantayhteys()->prepare($sql);
+        $ok = $kysely->execute(array(htmlspecialchars($this->getReseptiID()), htmlspecialchars($this->getNimi()), htmlspecialchars($this->getOhjeet()), htmlspecialchars($this->getKuva())));
+        $this->jarjestysnumero = $kysely->fetchColumn();
+    }
 
 
     public static function haeVaiheetReseptiIDlla($id) {
@@ -86,6 +86,7 @@ class Valmistusvaihe {
         return $tulokset;
     }
 
+//   TODO poista
 //    public static function etsiReseptiIDlla($id) {
 //        $sql = "SELECT nimi, kuvaus, raakaaineluokitus ,kayttotilanneluokitus, annosmaara, kayttajaid FROM valmistusvaihe where reseptiid = ?";
 //        $kysely = getTietokantayhteys()->prepare($sql);
@@ -103,6 +104,8 @@ class Valmistusvaihe {
 //            $kayttaja->setSahkoposti($tulos->sahkoposti);
 //            return $kayttaja;
 //        }
+//    
+//    
 //    }
 //    public function muokkaa() {
 //        $sql = "UPDATE kayttaja SET kayttajatunnus =?, salasana=?, sahkoposti=? WHERE kayttajaid=?";

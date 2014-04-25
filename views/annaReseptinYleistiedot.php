@@ -11,7 +11,7 @@
         ?>
         </font>
         
-        <h2 class="form-signin-heading">TODO TÄLLÄ SIVULLA VAIN NÄYTETÄÄN RESEPTIN TIEDOT (Ole hyvä ja anna reseptin tiedot)</h2>
+        <h2 class="form-signin-heading">Ole hyvä ja anna reseptin tiedot</h2>
 
         <div class="input-group">
             <span class="input-group-addon">Reseptin nimi (pakollinen tieto)</span>
@@ -85,7 +85,7 @@
 
         <br>
 
-        <!--<button class="btn btn-lg btn-primary btn-block" type="submit">Lisää resepti</button>-->
+        <button class="btn btn-lg btn-primary btn-block" type="submit">Lisää resepti</button>
     </form>
 
 

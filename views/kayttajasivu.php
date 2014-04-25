@@ -3,7 +3,7 @@
     <!--<form class="form-signin" role="form" method="POST">-->
     <form action="addUserHandler.php" method="POST">
         <!--<h2 class="form-signin-heading">Ole hyvä ja kirjaudu sisään</h2>-->
-        <h2>Käyttäjän tiedot (kaikkea ei näytetä lopullisessa versiossa tai muokkaukseen vain muokkauslinkin kautta)</h2>
+        <h2>Käyttäjän tiedot (TODO ERIYTÄ MUOKKAUS TAI AINAKIN POISTA GET-OMINAISUUSkaikkea ei näytetä lopullisessa versiossa tai muokkaukseen vain muokkauslinkin kautta)</h2>
 <!--        <input type="text" name="username" class="form-control" placeholder="keittokirjaTunnuksesi" 
 autofocus/>
         <input type="password" name="password" class="form-control" placeholder="salasana" />-->

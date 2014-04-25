@@ -1,4 +1,7 @@
 <?php
+error_reporting(E_ALL);
+ini_set('display_errors', 1);
+
 
 //require_once sisällyttää annetun tiedoston vain kerran
 require_once 'libs/common.php';

@@ -5,7 +5,7 @@ require_once 'libs/models/Resepti.php';
 
 $uusiResepti = new Resepti();
 
-$sivu = "reseptisivu.php";
+$sivu = "annaReseptinYleistiedot.php";
 $virheet=array();
 $tiedot=array("resepti" => $uusiResepti, "virheet" => $virheet);
 

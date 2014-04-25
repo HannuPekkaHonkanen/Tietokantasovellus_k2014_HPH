@@ -13,7 +13,7 @@ CREATE TABLE Resepti (
 	kayttotilanneluokitus varchar(100) not null,				
 	annosmaara integer not null,				
 	kuva varchar(500),				
-        kayttajaid serial,
+        kayttajaid integer,
         foreign key (kayttajaid) references Kayttaja
 );
 
@@ -24,8 +24,8 @@ CREATE TABLE Ateriakokonaisuus (
 );
 
 CREATE TABLE Ateriakokonaisuudet (
-	ateriakokonaisuusid serial,
-	reseptiid serial,
+	ateriakokonaisuusid integer,
+	reseptiid integer,
         primary key (ateriakokonaisuusid, reseptiid),
         foreign key (ateriakokonaisuusid) references Ateriakokonaisuus,
         foreign key (reseptiid) references Resepti
@@ -49,7 +49,7 @@ CREATE TABLE Raakaaine (
 );
 
 CREATE TABLE Valmistusvaihe (
-        reseptiid serial,
+        reseptiid integer,
         jarjestysnumero serial,
         primary key (reseptiid, jarjestysnumero),
 	nimi varchar(100) not null,				
@@ -59,9 +59,9 @@ CREATE TABLE Valmistusvaihe (
 );
 
 CREATE TABLE Maarat (
-        reseptiid serial,
-        vaihenumero serial,
-        raakaaineid serial,
+        reseptiid integer,
+        vaihenumero integer,
+        raakaaineid integer,
         primary key (reseptiid, vaihenumero, raakaaineid),
         maara integer not null,
         mittayksikko varchar(20) not null,

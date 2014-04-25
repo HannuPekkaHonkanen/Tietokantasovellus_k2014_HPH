@@ -1,0 +1,30 @@
+Welcome to Git (version 1.9.0-preview20140217)
+
+
+Run 'git help git' to display the help index.
+Run 'git help <command>' to display help for specific commands.
+
+Hannu@HANNU-PC ~
+$ cd Tietokantasovellus_k2014_HPH
+
+Hannu@HANNU-PC ~/Tietokantasovellus_k2014_HPH (master)
+$ git add -A
+warning: LF will be replaced by CRLF in css/bootstrap-theme.css.
+The file will have its original line endings in your working directory.
+warning: LF will be replaced by CRLF in css/bootstrap-theme.min.css.
+The file will have its original line endings in your working directory.
+warning: LF will be replaced by CRLF in css/bootstrap.css.
+The file will have its original line endings in your working directory.
+warning: LF will be replaced by CRLF in css/bootstrap.min.css.
+The file will have its original line endings in your working directory.
+warning: LF will be replaced by CRLF in css/main.css.
+The file will have its original line endings in your working directory.
+warning: LF will be replaced by CRLF in fonts/glyphicons-halflings-regular.svg.
+The file will have its original line endings in your working directory.
+warning: LF will be replaced by CRLF in js/bootstrap.js.
+The file will have its original line endings in your working directory.
+warning: LF will be replaced by CRLF in js/bootstrap.min.js.
+The file will have its original line endings in your working directory.
+
+Hannu@HANNU-PC ~/Tietokantasovellus_k2014_HPH (master)
+$

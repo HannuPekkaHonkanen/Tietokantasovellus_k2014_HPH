@@ -38,9 +38,10 @@
                 <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                     <ul class="nav navbar-nav">
                         <?php if (onKirjautunut()) { ?>
-                        <li class="active"><a href="addRecipe.php#">Lisää resepti</a></li>
+                            <li class="active"><a href="addIngredient.php#">Lisää raaka-aine (lisätään ennen reseptin lisäämistä)</a></li>
+                            <li><a href="addRecipe.php#">Lisää resepti</a></li>
                         <?php } ?>
-                        <li><a href="#">Linkki</a></li>
+                        <!--<li><a href="#">Linkki</a></li>-->
                         <!--
                         <li class="dropdown">
                             <a href="#" class="dropdown-toggle" data-toggle="dropdown">Dropdown <b class="caret"></b></a>
@@ -91,13 +92,17 @@
 
         <div id="content">
 
-           <?php if (isset($_SESSION["ilmoitus"])){
-               echo $_SESSION["ilmoitus"];
-               echo "<br><br>";
-               unset($_SESSION["ilmoitus"]);
-           }?>
+            <center>
+                <?php
+                if (isset($_SESSION["ilmoitus"])) {
+                    echo $_SESSION["ilmoitus"];
+                    echo "<br>";
+                    unset($_SESSION["ilmoitus"]);
+                }
+                ?>
+            </center>
 
-            <?php require $sivu; ?>
+                <?php require $sivu; ?>
 
         </div>
     </body>

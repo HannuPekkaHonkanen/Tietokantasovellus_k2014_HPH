@@ -10,9 +10,18 @@ require_once "libs/models/Raakaaine.php";
 $uusiRaakaaine = new Raakaaine();
 
 $uusiRaakaaine->setNimi($_POST["name"]);
+$yksikkohinta=$_POST["unitprice"];
+
+// TODO LISÄÄ VIRHETARKISTUKSET $uusiRaakaaine
+// TODO LISÄÄ VIRHETARKISTUKSET $yksikkohinta
+
 $uusiRaakaaine->lisaaKantaan();
 
-if ($_POST["unitprice"] != "") {
-    $uusiRaakaaine->setYksikkohinta($_POST["unitprice"]);
-    $uusiRaakaaine->asetaYksikkohinta();
+
+
+if ($yksikkohinta != "") { // TODO TÄMÄ $yksikkohinta VIRHETARK. LUOKKAAN Raakaaine!!!
+    $uusiRaakaaine->setYksikkohinta($yksikkohinta);
+    $uusiRaakaaine->vieYksikkohintaKantaan();
 }
+
+//TODO OHJAA JOLLEKIN SIVULLE

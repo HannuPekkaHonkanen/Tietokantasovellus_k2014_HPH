@@ -139,7 +139,7 @@ class Raakaaine {
         $this->raakaaineID = $kysely->fetchColumn();
     }
 
-    public function asetaYksikkohinta() {
+    public function vieYksikkohintaKantaan() {
         $sql = "UPDATE raakaaine SET yksikkohinta =? WHERE raakaaineid=?";
         $kysely = getTietokantayhteys()->prepare($sql);
         $ok = $kysely->execute(array(htmlspecialchars($this->getYksikkohinta()), $this->getRaakaaineID()));

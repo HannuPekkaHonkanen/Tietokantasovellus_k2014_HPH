@@ -10,7 +10,6 @@ class Resepti {
     private $annosmaara;
     private $kuva;
     private $kayttajaID;
-//    private $vaiheet = array();
     private $virheet = array();
 
     public function __construct() {
@@ -49,10 +48,6 @@ class Resepti {
         $this->kayttajaID = $kayttajaID;
     }
 
-//    public function setVaiheet($vaiheet) {
-//        $this->vaiheet = $vaiheet;
-//    }
-
     public function setVirheet($virheet) {
         $this->virheet = $virheet;
     }
@@ -88,10 +83,6 @@ class Resepti {
     public function getKayttajaID() {
         return $this->kayttajaID;
     }
-
-//    public function getVaiheet() {
-//        return $this->vaiheet;
-//    }
 
     public function getVirheet() {
         return $this->virheet;

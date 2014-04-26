@@ -9,12 +9,14 @@ require_once "libs/models/Kayttaja.php";
 
 //echo 'tervetuloa';
 
-// TODO LISÄÄ VIRHETARKISTUKSET
 
 $uusiKayttaja = new Kayttaja();
 $uusiKayttaja->setKayttajatunnus($_POST["username"]);
 $uusiKayttaja->setSalasana($_POST["password"]);
 $uusiKayttaja->setSahkoposti($_POST["email"]);
+
+// TODO LISÄÄ VIRHETARKISTUKSET
+
 $uusiKayttaja->lisaaKantaan();
 
 //TODO OHJAA JOLLEKIN SIVULLE

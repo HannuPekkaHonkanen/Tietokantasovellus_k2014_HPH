@@ -2,10 +2,18 @@
 error_reporting(E_ALL);
 ini_set('display_errors', 1);
 ?>
-<?php // foreach (Valmistusvaihe::haeVaiheetReseptiIDlla($data->resepti->getReseptiID()) as $vaihe) {   ?>
+
+<?php
+require_once "libs/common.php";
+require_once "libs/tietokantayhteys.php";
+require_once "libs/models/Resepti.php";
+$lisattavaResepti = Resepti::etsiReseptiIDlla((int) $_SESSION["reseptiID"]);
+?>
+
+<?php // foreach (Valmistusvaihe::haeVaiheetReseptiIDlla($lisattavaResepti->getReseptiID()) as $vaihe) {   ?>
 <?php require_once 'libs/models/Valmistusvaihe.php'; ?>
 
-<?php foreach (Valmistusvaihe::haeVaiheetReseptiIDlla(1) as $vaihe) { ?>
+<?php foreach (Valmistusvaihe::haeVaiheetReseptiIDlla($lisattavaResepti->getReseptiID()) as $vaihe) { ?>
     <h3><?php echo $vaihe->getNimi(); ?></h3>
     <?php echo $vaihe->getOhjeet(); ?><br><br>
     <!--TODO NÄYTÄ KUVA TAI OTA KOKONAAN RESEPTIN TIEDOISTA POIS-->

@@ -12,8 +12,8 @@ class Valmistusvaihe {
         
     }
 
-    public function setReseptiID($kayttajaID) {
-        $this->reseptiID = $kayttajaID;
+    public function setReseptiID($reseptiID) {
+        $this->reseptiID = $reseptiID;
     }
 
     public function setJarjestysnumero($jarjestysnumero) {
@@ -52,8 +52,24 @@ class Valmistusvaihe {
         return $this->kuva;
     }
 
+    public function onkoKelvollinen() {
+
+        if (trim($this->nimi) == "") {
+            $this->virheet["nimi"] = "Nimi ei saa olla tyhjä.";
+        } else {
+            unset($this->virheet["nimi"]);
+        }
+
+        if (trim($this->ohjeet) == "") {
+            $this->virheet["nimi"] = "Ohjeet ei saa olla tyhjä.";
+        } else {
+            unset($this->virheet["nimi"]);
+        }
+
+        return empty($this->virheet);
+    }
+
     public function getVirheet() {
-//        TODO return $this->virheet["annosmaara"]+$this->virheet["nimi"];
         return $this->virheet;
     }
 
@@ -63,7 +79,6 @@ class Valmistusvaihe {
         $ok = $kysely->execute(array(htmlspecialchars($this->getReseptiID()), htmlspecialchars($this->getNimi()), htmlspecialchars($this->getOhjeet()), htmlspecialchars($this->getKuva())));
         $this->jarjestysnumero = $kysely->fetchColumn();
     }
-
 
     public static function haeVaiheetReseptiIDlla($id) {
         $sql = "SELECT reseptiid, jarjestysnumero, nimi, ohjeet, kuva FROM valmistusvaihe WHERE reseptiid = ? ORDER BY jarjestysnumero";

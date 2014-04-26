@@ -77,12 +77,6 @@
 
         <br>
 
-        <!--        <div class="input-group">
-                    <span class="input-group-addon">VIE TÄMÄ RAAKA-AINEESEEN Yksikköhinta</span>
-                    <input type="text" name="unitprice" class="form-control"/>
-                    <span class="input-group-addon">€ / kg</span>
-                </div>-->
-
         <br>
 
         <button class="btn btn-lg btn-primary btn-block" type="submit">Tallenna yleistiedot</button>

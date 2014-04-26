@@ -1,15 +1,18 @@
+<?php
+error_reporting(E_ALL);
+ini_set('display_errors', 1);
+?>
+
+<?php
+require_once "libs/common.php";
+require_once "libs/tietokantayhteys.php";
+require_once "libs/models/Valmistusvaihe.php";
+//$lisattavaResepti = Resepti::etsiReseptiIDlla((int) $_SESSION["reseptiID"]);
+?>
+
 <div class="container">
 
-    <form action="addRecipeHandler.php" method="POST">
-
-        <font color="red">
-        <?php
-        foreach ($data->virheet as $virhe) {
-            echo $virhe;
-            echo "<br>";
-        }
-        ?>
-        </font>
+    <form action="addPhaseHandler.php" method="POST">
 
         <?php
         require 'reseptinyleistiedot.php';
@@ -19,8 +22,18 @@
         require 'vaiheetjamaarat.php';
         ?>
 
+        <font color="red">
+        <?php
+        foreach ($data->virheet as $virhe) {
+            echo $virhe;
+            echo "<br>";
+        }
+        ?>
+        
+        </font>
 
-
+        
+        <h2 class="form-signin-heading">Reseptin yleistiedot:</h2>
 
         <div class="input-group">
             <span class="input-group-addon">Reseptin nimi (pakollinen tieto)</span>
@@ -41,14 +54,8 @@
         <div class="input-group">
             <span class="input-group-addon">Raaka-aineluokitus, jonka perusteella reseptejä voi hakea (pakollinen tieto)</span>
             <select name="ingredientClass" class="form-control">
-                <?php $raakaaineluokitus = $data->resepti->getRaakaaineluokitus(); ?>
-                <?php
-                if (!empty($raakaaineluokitus)) {
-                    echo "<option>";
-                    echo $raakaaineluokitus;
-                    echo "</option>";
-                }
-                ?>
+                <?php $raakaaineluokitus=$data->resepti->getRaakaaineluokitus(); ?>
+                <?php if (!empty($raakaaineluokitus)){echo "<option>"; echo $raakaaineluokitus;echo "</option>"; }?>
                 <option>Marja</option>
                 <option>Salaatti</option>
                 <option>Kasvis</option>
@@ -64,14 +71,8 @@
         <div class="input-group">
             <span class="input-group-addon">Käyttötilanneluokitus (pakollinen tieto)</span>
             <select name="useSituation" class="form-control">
-                <?php $kayttotilanneluokitus = $data->resepti->getKayttotilanneluokitus(); ?>
-                <?php
-                if (!empty($kayttotilanneluokitus)) {
-                    echo "<option>";
-                    echo $kayttotilanneluokitus;
-                    echo "</option>";
-                }
-                ?>
+                <?php $kayttotilanneluokitus=$data->resepti->getKayttotilanneluokitus(); ?>
+                <?php if (!empty($kayttotilanneluokitus)){echo "<option>"; echo $kayttotilanneluokitus;echo "</option>"; }?>
                 <option>Alkujuoma</option>
                 <option>Ruokajuoma</option>
                 <option>Jälkiruokajuoma</option>
@@ -98,15 +99,9 @@
 
         <br>
 
-        <!--        <div class="input-group">
-                    <span class="input-group-addon">VIE TÄMÄ RAAKA-AINEESEEN Yksikköhinta</span>
-                    <input type="text" name="unitprice" class="form-control"/>
-                    <span class="input-group-addon">€ / kg</span>
-                </div>-->
-
         <br>
 
-        <!--<button class="btn btn-lg btn-primary btn-block" type="submit">Lisää resepti</button>-->
+        <button class="btn btn-lg btn-primary btn-block" type="submit">Tallenna yleistiedot</button>
     </form>
 
 

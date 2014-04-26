@@ -26,14 +26,14 @@ if ($uusiResepti->onkoKelvollinen()) {
 
     $uusiResepti->lisaaKantaan();
     
-    $_SESSION["ilmoitus"] = "Reseptin yleistiedot lisättiin onnistuneesti.";
-    $_SESSION["reseptiID"] = $uusiResepti->getReseptiID();
-    
-    $sivu = "siirryantamaanvaiheita.php";
-    $virheet=array();
-    $tiedot=array("virheet" => $virheet);
+    $sivu = "annavaiheetjamaarat.php";
+    $virheet = array();
+    $tiedot=array("resepti" => $uusiResepti, "virheet" => $virheet);
     naytaNakyma($sivu, $tiedot);
 
+    $_SESSION["ilmoitus"] = "Reseptin yleistiedot lisättiin onnistuneesti.";
+
+    
 } else {
     
     unset($_SESSION["ilmoitus"]);

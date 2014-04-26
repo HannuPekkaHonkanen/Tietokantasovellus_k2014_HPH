@@ -24,7 +24,7 @@ $haettuKayttaja = Kayttaja::etsiKayttajaTunnuksilla($kayttajatunnus, $salasana);
     
 /* Tarkistetaan onko parametrina saatu oikeat tunnukset */
 if ($haettuKayttaja == NULL) {
-    /* Väärän tunnuksen syöttänyt saa eteensä kirjautumislomakkeen. */
+    /* TODO Väärän tunnuksen syöttänyt saa eteensä kirjautumislomakkeen. */
     echo 'väärät tunnukset';
     $sivu = "kirjautumissivu.php";
     naytaNakyma($sivu);

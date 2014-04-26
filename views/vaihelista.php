@@ -1,5 +1,6 @@
 <div class="container">
-    <h1>Vaihelista (XXXhakutulos)</h1>
+    <!--NOTE TÄTÄ EI KÄYTETÄ SOVELLUKSESSA-->
+    <h1>Vaihelista (hakutulos)</h1>
     <table class="table table-striped">
         <thead>
             <tr>

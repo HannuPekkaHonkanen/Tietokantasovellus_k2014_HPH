@@ -1,15 +1,15 @@
 <?php
+error_reporting(E_ALL);
+ini_set('display_errors', 1);
 
 require_once 'libs/common.php';
 require_once 'libs/models/Kayttaja.php';
 
-
 $uusiKayttaja = new Kayttaja();
-////$kayttaja->setKayttajaID($tulos->kayttajaid);
-$uusiKayttaja->setKayttajatunnus("testin");
-$uusiKayttaja->setSalasana("testin");
-$uusiKayttaja->setSahkoposti("testin");
 
 $sivu = "rekisteroitymissivu.php";
-naytaNakyma($sivu, array("kayttaja" => $uusiKayttaja));
+$virheet=array();
+$tiedot=array("kayttaja" => $uusiKayttaja, "virheet" => $virheet);
+
+naytaNakyma($sivu, $tiedot);
 

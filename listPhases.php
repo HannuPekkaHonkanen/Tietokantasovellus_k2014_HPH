@@ -1,4 +1,5 @@
 <?php
+// NOTE TÄTÄ EI KÄYTETÄ SOVELLUKSESSA
 
 //require_once sisällyttää annetun tiedoston vain kerran
 require_once 'libs/common.php';

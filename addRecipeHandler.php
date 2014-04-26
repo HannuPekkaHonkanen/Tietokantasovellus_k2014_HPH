@@ -17,23 +17,30 @@ $uusiResepti->setKuva($_POST["picture"]);
 
 if (onKirjautunut()) {
     $uusiResepti->setKayttajaID($_SESSION["kirjautunutid"]);
-//    echo "RESEPTI LISÄTTIIN";
+//    TODO TÄMÄ KAIKKI POIS? echo "RESEPTI LISÄTTIIN";
 } else {
     echo 'ET OLE KIRJAUTUNUT';
 }
 
 if ($uusiResepti->onkoKelvollinen()) {
-    $uusiResepti->lisaaKantaan();
-    header("Location: frontPage.php");
-    $_SESSION["ilmoitus"] = "Resepti lisättiin onnistuneesti.";
-} else {
-    unset($_SESSION["ilmoitus"]);
-//    echo "VIRHEELLISIÄ TIETOJA";
-//    echo "<br>";
-    $virheet = $uusiResepti->getVirheet();
 
-    $sivu = "annaReseptinYleistiedot.php";
+    $uusiResepti->lisaaKantaan();
+    
+    $sivu = "annavaiheetjamaarat.php";
+    $virheet = array();
     $tiedot=array("resepti" => $uusiResepti, "virheet" => $virheet);
     naytaNakyma($sivu, $tiedot);
-//    echo $uusiResepti->getVirheet();
+
+    $_SESSION["ilmoitus"] = "Reseptin yleistiedot lisättiin onnistuneesti.";
+
+    
+} else {
+    
+    unset($_SESSION["ilmoitus"]);
+
+    $sivu = "annaReseptinYleistiedot.php";
+    $virheet = $uusiResepti->getVirheet();
+    $tiedot=array("resepti" => $uusiResepti, "virheet" => $virheet);
+    naytaNakyma($sivu, $tiedot);
+    
 }

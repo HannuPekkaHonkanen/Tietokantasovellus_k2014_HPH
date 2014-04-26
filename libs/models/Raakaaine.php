@@ -132,6 +132,16 @@ class Raakaaine {
         return $this->suolaa;
     }
 
+    public static function haeNimiRaakaaineIDlla($raakaaineid) {
+        $sql = "SELECT nimi FROM raakaaine WHERE  raakaaineid = ?";
+        $kysely = getTietokantayhteys()->prepare($sql);
+        $kysely->execute(array($raakaaineid));
+
+        $tulos= $kysely->fetchColumn();
+
+        return $tulos;
+    }
+
     public function lisaaKantaan() {
         $sql = "INSERT INTO raakaaine (nimi, yksikkohinta) VALUES (?,NULL) RETURNING raakaaineid";
         $kysely = getTietokantayhteys()->prepare($sql);

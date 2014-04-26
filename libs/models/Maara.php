@@ -75,27 +75,42 @@ class Maara {
         $ok = $kysely->execute(array(htmlspecialchars($this->getReseptiID(), htmlspecialchars($this->getVaihenumero()), htmlspecialchars($this->getRaakaaineID()), htmlspecialchars($this->getMaara()), htmlspecialchars($this->getMittayksikko()))));
     }
 
-    public static function haeMaaratReseptiVaiheJaRaakaaineIDeilla($id) {
-        $sql = "SELECT reseptiid, vaihenumero, raakaaineid, maara, mittayksikko FROM naara WHERE reseptiid = ? reseptiid = ? raakaaineid = ? ORDER BY vaihenumero";
+    public static function haeMaaraReseptiVaiheJaRaakaaineIDeilla($reseptiid, $vaihenumero, $raakaaineid) {
+        $sql = "SELECT reseptiid, vaihenumero, raakaaineid, maara, mittayksikko FROM maara WHERE reseptiid = ? vaihenumero = ? raakaaineid = ?";
         $kysely = getTietokantayhteys()->prepare($sql);
-        $kysely->execute(array($id));
+        $kysely->execute(array($reseptiid, $vaihenumero, $raakaaineid));
+
+        $tulos = $kysely->fetchColumn();
+        $maara = new Maara();
+        $maara->setReseptiID($tulos->reseptiid);
+        $maara->setVaihenumero($tulos->vaihenumero);
+        $maara->setRaakaaineID($tulos->raakaaineid);
+        $maara->getMaara($tulos->maara);
+        $maara->getMittayksikko($tulos->mittayksikko);
+
+        return $maara;
+    }
+
+    public static function haeMaaratReseptiJaVaiheIDeilla($reseptiid, $vaihenumero) {
+        $sql = "SELECT reseptiid, vaihenumero, raakaaineid, maara, mittayksikko FROM maara WHERE reseptiid = ? AND vaihenumero = ? ORDER BY vaihenumero";
+        $kysely = getTietokantayhteys()->prepare($sql);
+        $kysely->execute(array($reseptiid, $vaihenumero));
 
         $tulokset = array();
-        foreach ($kysely->fetchAll(PDO::FETCH_OBJ) as $tulos) {
-            $valmistusvaihe = new Valmistusvaihe();
-            $valmistusvaihe->setReseptiID($tulos->reseptiid);
-            $valmistusvaihe->setVaihenumero($tulos->vaihenumero);
-            $valmistusvaihe->setNimi($tulos->nimi);
-            $valmistusvaihe->setOhjeet($tulos->ohjeet);
-            $valmistusvaihe->setKuva($tulos->kuva);
+        foreach ($kysely->fetchAll(PDO::FETCH_OBJ) as $maara) {
+            $maara = new Maara();
+            $maara->setReseptiID($tulos->reseptiid);
+            $maara->setVaihenumero($tulos->vaihenumero);
+            $maara->setRaakaaineID($tulos->raakaaineid);
+            $maara->getMaara($tulos->maara);
+            $maara->getMittayksikko($tulos->mittayksikko);
 
             //$array[] = $muuttuja; lisää muuttujan arrayn perään. 
 
-            $tulokset[] = $valmistusvaihe;
+            $tulokset[] = $maara;
         }
         return $tulokset;
     }
-
 
 ////   TODO poista OSA AINAKIN
 ////    public static function etsiReseptiIDlla($id) {

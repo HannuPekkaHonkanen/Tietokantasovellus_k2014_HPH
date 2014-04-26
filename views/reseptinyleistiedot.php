@@ -22,4 +22,3 @@ $lisattavaResepti = Resepti::etsiReseptiIDlla((int) $_SESSION["reseptiID"]);
 
 <!--TODO NÄYTÄ KUVA TAI OTA KOKONAAN RESEPTIN TIEDOISTA POIS<input type="text" name="picture" class="form-control" placeholder="(URL-osoite)" value="<?php // echo $lisattavaResepti->getKuva();   ?>"/>-->
 
-<hr>

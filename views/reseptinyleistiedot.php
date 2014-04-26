@@ -12,7 +12,7 @@ $lisattavaResepti = Resepti::etsiReseptiIDlla((int) $_SESSION["reseptiID"]);
 
 <h2 class="form-signin-heading"><?php echo $lisattavaResepti->getNimi(); ?></h2>
 
-<?php echo $lisattavaResepti->getKuvaus(); ?><br><br>
+<?php echo $lisattavaResepti->getKuvaus(); ?>
 
 <h4>Raaka-aineluokitus: <?php echo $lisattavaResepti->getRaakaaineluokitus(); ?></h4>
 

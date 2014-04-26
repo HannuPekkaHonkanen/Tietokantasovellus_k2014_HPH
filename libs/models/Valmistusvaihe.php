@@ -3,7 +3,7 @@
 class Valmistusvaihe {
 
     private $reseptiID;
-    private $jarjestysnumero;
+    private $vaihenumero;
     private $nimi;
     private $ohjeet;
     private $kuva;
@@ -16,8 +16,8 @@ class Valmistusvaihe {
         $this->reseptiID = $reseptiID;
     }
 
-    public function setJarjestysnumero($jarjestysnumero) {
-        $this->jarjestysnumero = $jarjestysnumero;
+    public function setVaihenumero($vaihenumero) {
+        $this->vaihenumero = $vaihenumero;
     }
 
     public function setOhjeet($ohjeet) {
@@ -36,8 +36,8 @@ class Valmistusvaihe {
         return $this->reseptiID;
     }
 
-    public function getJarjestysnumero() {
-        return $this->jarjestysnumero;
+    public function getVaihenumero() {
+        return $this->vaihenumero;
     }
 
     public function getNimi() {
@@ -74,14 +74,14 @@ class Valmistusvaihe {
     }
 
     public function lisaaKantaan() {
-        $sql = "INSERT INTO valmistusvaihe (reseptiid, nimi, ohjeet, kuva) VALUES (?,?,?,?) RETURNING jarjestysnumero";
+        $sql = "INSERT INTO valmistusvaihe (reseptiid, nimi, ohjeet, kuva) VALUES (?,?,?,?) RETURNING vaihenumero";
         $kysely = getTietokantayhteys()->prepare($sql);
         $ok = $kysely->execute(array(htmlspecialchars($this->getReseptiID()), htmlspecialchars($this->getNimi()), htmlspecialchars($this->getOhjeet()), htmlspecialchars($this->getKuva())));
-        $this->jarjestysnumero = $kysely->fetchColumn();
+        $this->vaihenumero = $kysely->fetchColumn();
     }
 
     public static function haeVaiheetReseptiIDlla($id) {
-        $sql = "SELECT reseptiid, jarjestysnumero, nimi, ohjeet, kuva FROM valmistusvaihe WHERE reseptiid = ? ORDER BY jarjestysnumero";
+        $sql = "SELECT reseptiid, vaihenumero, nimi, ohjeet, kuva FROM valmistusvaihe WHERE reseptiid = ? ORDER BY vaihenumero";
         $kysely = getTietokantayhteys()->prepare($sql);
         $kysely->execute(array($id));
 
@@ -89,7 +89,7 @@ class Valmistusvaihe {
         foreach ($kysely->fetchAll(PDO::FETCH_OBJ) as $tulos) {
             $valmistusvaihe = new Valmistusvaihe();
             $valmistusvaihe->setReseptiID($tulos->reseptiid);
-            $valmistusvaihe->setJarjestysnumero($tulos->jarjestysnumero);
+            $valmistusvaihe->setVaihenumero($tulos->vaihenumero);
             $valmistusvaihe->setNimi($tulos->nimi);
             $valmistusvaihe->setOhjeet($tulos->ohjeet);
             $valmistusvaihe->setKuva($tulos->kuva);
@@ -101,7 +101,7 @@ class Valmistusvaihe {
         return $tulokset;
     }
 
-//   TODO poista
+//   TODO OSA VARMAAN POISTETTAVAA
 //    public static function etsiReseptiIDlla($id) {
 //        $sql = "SELECT nimi, kuvaus, raakaaineluokitus ,kayttotilanneluokitus, annosmaara, kayttajaid FROM valmistusvaihe where reseptiid = ?";
 //        $kysely = getTietokantayhteys()->prepare($sql);

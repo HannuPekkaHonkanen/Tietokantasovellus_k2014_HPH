@@ -34,38 +34,38 @@ CREATE TABLE Ateriakokonaisuudet (
 CREATE TABLE Raakaaine (
         raakaaineid serial primary key,
 	nimi varchar(100) not null unique,				
-        yksikkohinta integer,
-        tilavuuspaino integer,
-        kappalepaino integer,
-        energiaa integer,
-        proteiinia integer,
-        hyvaaRasvaa integer,
-        pahaaRasvaa integer,
-        hiilihydraatteja integer,
-        joistaSokereita integer,
-        joistaLaktoosia integer,
-        ravintokuitua integer,
-        suolaa integer
+        yksikkohinta real,
+        tilavuuspaino real,
+        kappalepaino real,
+        energiaa real,
+        proteiinia real,
+        hyvaaRasvaa real,
+        pahaaRasvaa real,
+        hiilihydraatteja real,
+        joistaSokereita real,
+        joistaLaktoosia real,
+        ravintokuitua real,
+        suolaa real
 );
 
 CREATE TABLE Valmistusvaihe (
         reseptiid integer,
-        jarjestysnumero serial,
-        primary key (reseptiid, jarjestysnumero),
+        vaihenumero serial,
+        primary key (reseptiid, vaihenumero),
 	nimi varchar(100) not null,				
 	ohjeet varchar(500),
 	kuva varchar(500),
         foreign key (reseptiid) references Resepti				
 );
 
-CREATE TABLE Maarat (
+CREATE TABLE Maara (
         reseptiid integer,
         vaihenumero integer,
         raakaaineid integer,
         primary key (reseptiid, vaihenumero, raakaaineid),
-        maara integer not null,
+        maara real not null,
         mittayksikko varchar(20) not null,
         foreign key (reseptiid) references Resepti,
         foreign key (raakaaineid) references Raakaaine,
-        foreign key (reseptiid, vaihenumero) references Valmistusvaihe (reseptiid, jarjestysnumero)
+        foreign key (reseptiid, vaihenumero) references Valmistusvaihe (reseptiid, vaihenumero)
 );

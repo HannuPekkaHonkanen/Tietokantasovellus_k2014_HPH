@@ -100,7 +100,7 @@ class Resepti {
             $this->virheet["annosmaara"] = "Annosmäärän tulee olla numero.";
         } elseif ($this->annosmaara <= 0) {
             $this->virheet["annosmaara"] = "Annosmäärän tulee olla positiivinen.";
-        } elseif (!preg_match('/^\d+$/',$this->annosmaara)) {
+        } elseif (!preg_match('/^\d+$/', $this->annosmaara)) {
             $this->virheet["annosmaara"] = "Annosmäärän tulee olla kokonaisluku.";
         } else {
             unset($this->virheet["annosmaara"]);
@@ -110,6 +110,7 @@ class Resepti {
     }
 
     public static function getReseptitSivulla($sivu, $montako) {
+//        reseptin kenttää kuvaus ei listassa tarvita
         $sql = "SELECT reseptiid, nimi, raakaaineluokitus, kayttotilanneluokitus, annosmaara, kayttajaid FROM resepti ORDER BY nimi LIMIT ? OFFSET ?";
         $kysely = getTietokantayhteys()->prepare($sql);
         $kysely->execute(array($montako, ($sivu - 1) * $montako));
@@ -132,11 +133,11 @@ class Resepti {
     public static function haeVaiheet() {
         return Valmistusvaihe::haeVaiheetReseptiIDlla($this->kayttajaID);
     }
-    
+
     public static function etsiReseptiIDlla($id) {
-        $sql = "SELECT reseptiid, nimi, raakaaineluokitus, kayttotilanneluokitus, annosmaara, kayttajaid FROM resepti where reseptiid = ?";
+        $sql = "SELECT reseptiid, nimi, kuvaus, raakaaineluokitus, kayttotilanneluokitus, annosmaara, kuva, kayttajaid FROM resepti where reseptiid = ?";
         $kysely = getTietokantayhteys()->prepare($sql);
-        $kysely->execute(array((int)$id));
+        $kysely->execute(array((int) $id));
 
         $tulos = $kysely->fetchObject();
         if ($tulos == null) {
@@ -146,11 +147,12 @@ class Resepti {
             $resepti = new Resepti();
             $resepti->setReseptiID($tulos->reseptiid);
             $resepti->setNimi($tulos->nimi);
+            $resepti->setKuvaus($tulos->kuvaus);
             $resepti->setRaakaaineluokitus($tulos->raakaaineluokitus);
             $resepti->setKayttotilanneluokitus($tulos->kayttotilanneluokitus);
             $resepti->setAnnosmaara($tulos->annosmaara);
+            $resepti->setKuva($tulos->kuva);
             $resepti->setKayttajaID($tulos->kayttajaid);
-//            $resepti->setVaiheet(Valmistusvaihe::haeVaiheetReseptiIDlla($tulos->reseptiid));
             return $resepti;
         }
     }
@@ -161,7 +163,7 @@ class Resepti {
         $kysely->execute();
         return $kysely->fetchColumn();
     }
-    
+
     public function lisaaKantaan0() {
 //        $sql = "INSERT INTO resepti (nimi, kuvaus, raakaaineluokitus, kayttotilanneluokitus, annosmaara, kayttajaid) VALUES (?, ?, ?, ?, ?, ?) RETURNING reseptiid";
         $sql = "INSERT INTO resepti (nimi, kuvaus, raakaaineluokitus, kayttotilanneluokitus, annosmaara, kayttajaid) VALUES (?, ?, ?, ?, ?, '2') RETURNING reseptiid";
@@ -259,7 +261,6 @@ class Resepti {
 //        $kysely = getTietokantayhteys()->prepare($sql);
 //        $ok = $kysely->execute(array(htmlspecialchars($this->getYksikkohinta()), $this->getRaakaaineID()));
 //    }
-
 }
 
 ?>

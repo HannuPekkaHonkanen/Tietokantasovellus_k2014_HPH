@@ -18,7 +18,7 @@
                         <!--<td>1</td>-->
                     <!--<td><A href="recipe.php?id=<?php // echo $resepti->getReseptiID(); ?>"><?php // echo $resepti->getNimi(); ?></A></td>-->
                     <td><?php echo $vaihe->getReseptiID(); ?></td>
-                    <td><?php echo $vaihe->getJarjestysnumero(); ?></td>
+                    <td><?php echo $vaihe->getVaihenumero(); ?></td>
                     <td><?php echo $vaihe->getNimi(); ?></td>
                     <td><?php echo $vaihe->getOhjeet(); ?></td>
                     <td><?php echo $vaihe->getKuva(); ?></td>

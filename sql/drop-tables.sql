@@ -1,6 +1,6 @@
 DROP TABLE Valmistusvaihe CASCADE
 \g
-DROP TABLE Maarat CASCADE
+DROP TABLE Maara CASCADE
 \g
 DROP TABLE Raakaaine CASCADE
 \g

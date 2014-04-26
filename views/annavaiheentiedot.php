@@ -7,7 +7,6 @@ ini_set('display_errors', 1);
 require_once "libs/common.php";
 require_once "libs/tietokantayhteys.php";
 require_once "libs/models/Valmistusvaihe.php";
-//$lisattavaResepti = Resepti::etsiReseptiIDlla((int) $_SESSION["reseptiID"]);
 ?>
 
 <div class="container">
@@ -29,7 +28,6 @@ require_once "libs/models/Valmistusvaihe.php";
             echo "<br>";
         }
         ?>
-        
         </font>
 
         <h2 class="form-signin-heading">Vaiheen tiedot:</h2>

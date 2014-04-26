@@ -3,10 +3,24 @@ error_reporting(E_ALL);
 ini_set('display_errors', 1);
 ?>
 
+<?php
+require_once "libs/common.php";
+require_once "libs/tietokantayhteys.php";
+require_once "libs/models/Valmistusvaihe.php";
+?>
+
 <div class="container">
 
-    <form action="addRecipeHandler.php" method="POST">
+    <form action="addQuantityHandler.php" method="POST">
         
+        <?php
+        require 'reseptinyleistiedot.php';
+        ?>
+
+        <?php
+        require 'vaiheetjamaarat.php';
+        ?>
+
         <font color="red">
         <?php
         foreach ($data->virheet as $virhe) {

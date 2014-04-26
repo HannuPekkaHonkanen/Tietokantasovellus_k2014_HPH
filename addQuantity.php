@@ -3,17 +3,11 @@ error_reporting(E_ALL);
 ini_set('display_errors', 1);
 
 require_once 'libs/common.php';
-require_once "libs/models/Valmistusvaihe.php";
+require_once "libs/models/Maara.php";
 
-$uusiVaihe = new Valmistusvaihe();
+$uusiMaara = new Maara();
 
-$sivu = "annavaiheentiedot.php";
+$sivu = "annamaarantiedot.php";
 $virheet=array();
-$tiedot=array("vaihe" => $uusiVaihe, "virheet" => $virheet);
+$tiedot=array("maara" => $uusiMaara, "virheet" => $virheet);
 naytaNakyma($sivu, $tiedot);
-
-
-    $sivu = "annavaiheentiedot.php";
-    $virheet = $uusiVaihe->getVirheet();
-    $tiedot = array("vaihe" => $uusiVaihe, "virheet" => $virheet);
-    naytaNakyma($sivu, $tiedot);

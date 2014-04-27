@@ -2,6 +2,17 @@
 
     <!--<form class="form-signin" role="form" method="POST">-->
     <form action="addIngredientHandler.php" method="POST">
+        
+                
+        <font color="red">
+        <?php
+        foreach ($data->virheet as $virhe) {
+            echo $virhe;
+            echo "<br>";
+        }
+        ?>
+        </font>
+
 
         <h2 class="form-signin-heading">Anna raaka-aineen tiedot</h2>
 

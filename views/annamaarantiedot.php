@@ -60,15 +60,12 @@ require_once "libs/models/Raakaaine.php";
             <tbody>
                 <tr>
                     <td>
-                        <select name="raakaaineid" class="form-control">
+                        <select name="ingredientid" class="form-control">
                             <?php foreach (Raakaaine::haeKaikki() as $raakaaine): ?>
                                 <option value="<?php echo $raakaaine->getRaakaaineID(); ?>"><?php echo $raakaaine->getNimi(); ?></option>
                             <?php endforeach; ?>
                         </select>
                     </td>
-
-
-
 
                     <td>
                         <div class="input-group">
@@ -76,7 +73,6 @@ require_once "libs/models/Raakaaine.php";
                             <input type="text" name="quantity" class="form-control"/>
                         </div>
                     </td>
-
 
                     <td>
                         <select name="unit" class="form-control">
@@ -91,7 +87,6 @@ require_once "libs/models/Raakaaine.php";
                         </select>
                     </td>
 
-
                     <td>
                         <button class="btn btn-s btn-default" type="submit">Lisää raaka-aine</button>
                     </td>
@@ -104,10 +99,8 @@ require_once "libs/models/Raakaaine.php";
 
     <form action="addPhaseHandler.php" method="POST">
 
-
         <button class="btn btn-lg btn-primary" type="submit">Lisää uusi vaihe &raquo;</button>
 
     </form>
-
 
 </div> 

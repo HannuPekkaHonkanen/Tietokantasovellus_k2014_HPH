@@ -164,16 +164,6 @@ class Resepti {
         return $kysely->fetchColumn();
     }
 
-    public function lisaaKantaan0() {
-//        $sql = "INSERT INTO resepti (nimi, kuvaus, raakaaineluokitus, kayttotilanneluokitus, annosmaara, kayttajaid) VALUES (?, ?, ?, ?, ?, ?) RETURNING reseptiid";
-        $sql = "INSERT INTO resepti (nimi, kuvaus, raakaaineluokitus, kayttotilanneluokitus, annosmaara, kayttajaid) VALUES (?, ?, ?, ?, ?, '2') RETURNING reseptiid";
-        $kysely = getTietokantayhteys()->prepare($sql);
-//        $ok = $kysely->execute(array(htmlspecialchars($this->getNimi(), $this->getKuvaus(), $this->getRaakaaineluokitus(), $this->getKayttotilanneluokitus(), $this->getAnnosmaara(), $this->getKayttajaID())));
-//        $ok = $kysely->execute(array($this->getNimi(), $this->getKuvaus(), $this->getRaakaaineluokitus(), $this->getKayttotilanneluokitus(), $this->getAnnosmaara(), $this->getKayttajaID()));
-        $ok = $kysely->execute(array($this->getNimi(), $this->getKuvaus(), $this->getRaakaaineluokitus(), $this->getKayttotilanneluokitus(), $this->getAnnosmaara()));
-        $this->reseptiID = $kysely->fetchColumn();
-    }
-
     public function lisaaKantaan() {
         $sql = "INSERT INTO resepti (nimi, kuvaus, raakaaineluokitus ,kayttotilanneluokitus, annosmaara, kuva, kayttajaid) VALUES (?,?,?,?,?,?,?) RETURNING reseptiid";
         $kysely = getTietokantayhteys()->prepare($sql);
@@ -181,86 +171,6 @@ class Resepti {
         $this->reseptiID = $kysely->fetchColumn();
     }
 
-    public function lisaaKantaan2() {
-//        $sql = "INSERT INTO resepti (nimi, kuvaus, raakaaineluokitus, kayttotilanneluokitus, annosmaara, kayttajaid) VALUES (?, ?, ?, ?, ?, ?) RETURNING reseptiid";
-//        $sql = "INSERT INTO resepti (nimi, kuvaus, raakaaineluokitus, kayttotilanneluokitus, annosmaara, kayttajaid) VALUES ('lkj', 'ertkjlkj, 'marrja', 'juoma', 5,'9') RETURNING reseptiid";
-        $sql = "INSERT INTO resepti (reseptiid, nimi, kuvaus, raakaaineluokitus ,kayttotilanneluokitus, annosmaara, kayttajaid) VALUES ('4', 'kissapata', 'kissapataasd asdf', 'kissa', 'paaruoka', 10, '2')";
-        $kysely = getTietokantayhteys()->prepare($sql);
-        $ok = $kysely->execute();
-//        $ok = $kysely->execute(array($this->getNimi(), $this->getKuvaus(), $this->getRaakaaineluokitus(), $this->getKayttotilanneluokitus(), $this->getAnnosmaara(), $this->getKayttajaID()));
-//        $ok = $kysely->execute(array($this->getNimi(), $this->getKuvaus(), $this->getRaakaaineluokitus(), $this->getKayttotilanneluokitus(), $this->getAnnosmaara()));
-//        $this->reseptiID = $kysely->fetchColumn();
-    }
-
-    public function lisaaKantaan3() {
-//        $sql = "INSERT INTO resepti (nimi, kuvaus, raakaaineluokitus, kayttotilanneluokitus, annosmaara, kayttajaid) VALUES (?, ?, ?, ?, ?, ?) RETURNING reseptiid";
-//        $sql = "INSERT INTO resepti (nimi, kuvaus, raakaaineluokitus, kayttotilanneluokitus, annosmaara, kayttajaid) VALUES ('lkj', 'ertkjlkj, 'marrja', 'juoma', 5,'9') RETURNING reseptiid";
-        $sql = "INSERT INTO resepti (reseptiid, nimi, kuvaus, raakaaineluokitus ,kayttotilanneluokitus, annosmaara, kayttajaid) VALUES (?, ?, ?, ?, ?, ?, ?)";
-//$sql = "INSERT INTO resepti (reseptiid, nimi, kuvaus, raakaaineluokitus ,kayttotilanneluokitus, annosmaara, kayttajaid) VALUES ('4', 'kissapata', 'kissapataasd asdf', 'kissa', 'paaruoka', 10, '2')";
-        $kysely = getTietokantayhteys()->prepare($sql);
-        $ok = $kysely->execute(array('7', 'kissapata', 'kissapataasd asdf', 'kissa', 'paaruoka', 10, '2'));
-//        $ok = $kysely->execute(array($this->getNimi(), $this->getKuvaus(), $this->getRaakaaineluokitus(), $this->getKayttotilanneluokitus(), $this->getAnnosmaara(), $this->getKayttajaID()));
-//        $ok = $kysely->execute(array($this->getNimi(), $this->getKuvaus(), $this->getRaakaaineluokitus(), $this->getKayttotilanneluokitus(), $this->getAnnosmaara()));
-//        $this->reseptiID = $kysely->fetchColumn();
-    }
-
-    public function lisaaKantaan4() {
-//        $sql = "INSERT INTO resepti (nimi, kuvaus, raakaaineluokitus, kayttotilanneluokitus, annosmaara, kayttajaid) VALUES (?, ?, ?, ?, ?, ?) RETURNING reseptiid";
-//        $sql = "INSERT INTO resepti (nimi, kuvaus, raakaaineluokitus, kayttotilanneluokitus, annosmaara, kayttajaid) VALUES ('lkj', 'ertkjlkj, 'marrja', 'juoma', 5,'9') RETURNING reseptiid";
-        $sql = "INSERT INTO resepti (nimi, kuvaus, raakaaineluokitus ,kayttotilanneluokitus, annosmaara, kayttajaid) VALUES (?,?,?,?,?,?) RETURNING reseptiid";
-//$sql = "INSERT INTO resepti (reseptiid, nimi, kuvaus, raakaaineluokitus ,kayttotilanneluokitus, annosmaara, kayttajaid) VALUES ('4', 'kissapata', 'kissapataasd asdf', 'kissa', 'paaruoka', 10, '2')";
-        $kysely = getTietokantayhteys()->prepare($sql);
-        $ok = $kysely->execute(array('kissapata', 'kissapataasd asdf', 'kissa', 'paaruoka', 10, 2));
-//        $ok = $kysely->execute(array($this->getNimi(), $this->getKuvaus(), $this->getRaakaaineluokitus(), $this->getKayttotilanneluokitus(), $this->getAnnosmaara(), $this->getKayttajaID()));
-//        $ok = $kysely->execute(array($this->getNimi(), $this->getKuvaus(), $this->getRaakaaineluokitus(), $this->getKayttotilanneluokitus(), $this->getAnnosmaara()));
-        $this->reseptiID = $kysely->fetchColumn();
-    }
-
-    public function lisaaKantaan5() {
-//        $sql = "INSERT INTO resepti (nimi, kuvaus, raakaaineluokitus, kayttotilanneluokitus, annosmaara, kayttajaid) VALUES (?, ?, ?, ?, ?, ?) RETURNING reseptiid";
-//        $sql = "INSERT INTO resepti (nimi, kuvaus, raakaaineluokitus, kayttotilanneluokitus, annosmaara, kayttajaid) VALUES ('lkj', 'ertkjlkj, 'marrja', 'juoma', 5,'9') RETURNING reseptiid";
-        $sql = "INSERT INTO resepti (nimi, kuvaus, raakaaineluokitus ,kayttotilanneluokitus, annosmaara, kayttajaid) VALUES (?,?,?,?,22,2) RETURNING reseptiid";
-//$sql = "INSERT INTO resepti (reseptiid, nimi, kuvaus, raakaaineluokitus ,kayttotilanneluokitus, annosmaara, kayttajaid) VALUES ('4', 'kissapata', 'kissapataasd asdf', 'kissa', 'paaruoka', 10, '2')";
-        $kysely = getTietokantayhteys()->prepare($sql);
-//        $ok = $kysely->execute(array('kissapata', 'kissapataasd asdf', 'kissa', 'paaruoka', 10, '2'));
-        $ok = $kysely->execute(array($this->getNimi(), $this->getKuvaus(), $this->getRaakaaineluokitus(), $this->getKayttotilanneluokitus()));
-//        $ok = $kysely->execute(array($this->getNimi(), $this->getKuvaus(), $this->getRaakaaineluokitus(), $this->getKayttotilanneluokitus(), $this->getAnnosmaara()));
-        $this->reseptiID = $kysely->fetchColumn();
-    }
-
-    public function lisaaKantaan6() {
-//        $sql = "INSERT INTO resepti (nimi, kuvaus, raakaaineluokitus, kayttotilanneluokitus, annosmaara, kayttajaid) VALUES (?, ?, ?, ?, ?, ?) RETURNING reseptiid";
-//        $sql = "INSERT INTO resepti (nimi, kuvaus, raakaaineluokitus, kayttotilanneluokitus, annosmaara, kayttajaid) VALUES ('lkj', 'ertkjlkj, 'marrja', 'juoma', 5,'9') RETURNING reseptiid";
-        $sql = "INSERT INTO resepti (nimi, kuvaus, raakaaineluokitus ,kayttotilanneluokitus, annosmaara, kayttajaid) VALUES (?,?,?,?,?,?) RETURNING reseptiid";
-//$sql = "INSERT INTO resepti (reseptiid, nimi, kuvaus, raakaaineluokitus ,kayttotilanneluokitus, annosmaara, kayttajaid) VALUES ('4', 'kissapata', 'kissapataasd asdf', 'kissa', 'paaruoka', 10, '2')";
-        $kysely = getTietokantayhteys()->prepare($sql);
-//        $ok = $kysely->execute(array('kissapata', 'kissapataasd asdf', 'kissa', 'paaruoka', 10, '2'));
-//        $ok = $kysely->execute(array($this->getNimi(), $this->getKuvaus(), $this->getRaakaaineluokitus(), $this->getKayttotilanneluokitus(), 3, 33));
-//        $ok = $kysely->execute(array('kissapata', 'kissapataasd asdf', 'kissa', 'paaruoka', 10, 2));
-        $ok = $kysely->execute(array($this->getNimi(), $this->getKuvaus(), $this->getRaakaaineluokitus(), $this->getKayttotilanneluokitus(), 3, 3));
-//        $ok = $kysely->execute(array($this->getNimi(), $this->getKuvaus(), $this->getRaakaaineluokitus(), $this->getKayttotilanneluokitus(), $this->getAnnosmaara()));
-        $this->reseptiID = $kysely->fetchColumn();
-    }
-
-    public function lisaaKantaan7() {
-//        $sql = "INSERT INTO resepti (nimi, kuvaus, raakaaineluokitus, kayttotilanneluokitus, annosmaara, kayttajaid) VALUES (?, ?, ?, ?, ?, ?) RETURNING reseptiid";
-//        $sql = "INSERT INTO resepti (nimi, kuvaus, raakaaineluokitus, kayttotilanneluokitus, annosmaara, kayttajaid) VALUES ('lkj', 'ertkjlkj, 'marrja', 'juoma', 5,'9') RETURNING reseptiid";
-        $sql = "INSERT INTO resepti (nimi, kuvaus, raakaaineluokitus ,kayttotilanneluokitus, annosmaara, kayttajaid) VALUES (?,?,?,?,?,?) RETURNING reseptiid";
-//$sql = "INSERT INTO resepti (reseptiid, nimi, kuvaus, raakaaineluokitus ,kayttotilanneluokitus, annosmaara, kayttajaid) VALUES ('4', 'kissapata', 'kissapataasd asdf', 'kissa', 'paaruoka', 10, '2')";
-        $kysely = getTietokantayhteys()->prepare($sql);
-//        $ok = $kysely->execute(array('kissapata', 'kissapataasd asdf', 'kissa', 'paaruoka', 10, '2'));
-//        $ok = $kysely->execute(array($this->getNimi(), $this->getKuvaus(), $this->getRaakaaineluokitus(), $this->getKayttotilanneluokitus(), 3, 33));
-//        $ok = $kysely->execute(array('kissapata', 'kissapataasd asdf', 'kissa', 'paaruoka', 10, 2));
-        $ok = $kysely->execute(array($this->getNimi(), $this->getKuvaus(), $this->getRaakaaineluokitus(), $this->getKayttotilanneluokitus(), $this->getAnnosmaara(), $this->kayttajaID));
-//        $ok = $kysely->execute(array($this->getNimi(), $this->getKuvaus(), $this->getRaakaaineluokitus(), $this->getKayttotilanneluokitus(), $this->getAnnosmaara()));
-        $this->reseptiID = $kysely->fetchColumn();
-    }
-
-//    public function asetaYksikkohinta() {
-//        $sql = "UPDATE raakaaine SET yksikkohinta =? WHERE raakaaineid=?";
-//        $kysely = getTietokantayhteys()->prepare($sql);
-//        $ok = $kysely->execute(array(htmlspecialchars($this->getYksikkohinta()), $this->getRaakaaineID()));
-//    }
 }
 
 ?>

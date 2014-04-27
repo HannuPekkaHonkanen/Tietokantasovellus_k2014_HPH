@@ -1,4 +1,5 @@
 <?php
+
 error_reporting(E_ALL);
 ini_set('display_errors', 1);
 
@@ -11,17 +12,26 @@ $uusiRaakaaine = new Raakaaine();
 
 $uusiRaakaaine->setNimi($_POST["name"]);
 $yksikkohinta=$_POST["unitprice"];
+$uusiRaakaaine->setYksikkohinta($yksikkohinta);
 
-// TODO LISÄÄ VIRHETARKISTUKSET $uusiRaakaaine
-// TODO LISÄÄ VIRHETARKISTUKSET $yksikkohinta
+if ($uusiRaakaaine->onkoKelvollinen()) {
 
-$uusiRaakaaine->lisaaKantaan();
+    $uusiRaakaaine->lisaaKantaanNimella();
 
+    if ($yksikkohinta != "") {
+        $uusiRaakaaine->vieYksikkohintaKantaan();
+    }
 
+    $_SESSION["ilmoitus"] = "Raaka-aine lisättiin onnistuneesti.";
 
-if ($yksikkohinta != "") { // TODO TÄMÄ $yksikkohinta VIRHETARK. LUOKKAAN Raakaaine!!!
-    $uusiRaakaaine->setYksikkohinta($yksikkohinta);
-    $uusiRaakaaine->vieYksikkohintaKantaan();
+    header('Location: frontPage.php');
+    
+} else {
+
+    unset($_SESSION["ilmoitus"]);
+
+    $sivu = "lisaaraakaainesivu.php";
+    $virheet = $uusiRaakaaine->getVirheet();
+    $tiedot = array("raakaaine" => $uusiRaakaaine, "virheet" => $virheet);
+    naytaNakyma($sivu, $tiedot);
 }
-
-//TODO OHJAA JOLLEKIN SIVULLE

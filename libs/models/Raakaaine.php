@@ -5,6 +5,8 @@ class Raakaaine {
     private $raakaaineID;
     private $nimi;
     private $yksikkohinta;
+    private $virheet = array();
+
 //    private $tilavuuspaino;
 //    private $kappalepaino;
 //    private $energiaa;
@@ -18,6 +20,7 @@ class Raakaaine {
 //    private $suolaa;
 
     public function __construct() {
+        
     }
 
     public function setRaakaaineID($raakaaineID) {
@@ -131,7 +134,32 @@ class Raakaaine {
 //    public function getSuolaa() {
 //        return $this->suolaa;
 //    }
-    
+
+    public function getVirheet() {
+        return $this->virheet;
+    }
+
+    public function onkoKelvollinen() {
+
+        if (trim($this->nimi) == "") {
+            $this->virheet["nimi"] = "Nimi ei saa olla tyhjä.";
+        } else {
+            unset($this->virheet["nimi"]);
+        }
+
+        if ($this->yksikkohinta != "") {
+            if (!is_numeric($this->yksikkohinta)) {
+                $this->virheet["yksikkohinta"] = "Yksikkohinnan tulee olla numero.";
+            } elseif ($this->yksikkohinta <= 0) {
+                $this->virheet["yksikkohinta"] = "Yksikkohinnan tulee olla positiivinen.";
+            } else {
+                unset($this->virheet["yksikkohinta"]);
+            }
+        }
+
+        return empty($this->virheet);
+    }
+
     public static function haeKaikki() {
         $sql = "SELECT raakaaineid, nimi, yksikkohinta FROM raakaaine ORDER BY nimi";
         $kysely = getTietokantayhteys()->prepare($sql);
@@ -151,18 +179,17 @@ class Raakaaine {
         return $tulokset;
     }
 
-
     public static function haeNimiRaakaaineIDlla($raakaaineid) {
         $sql = "SELECT nimi FROM raakaaine WHERE  raakaaineid = ?";
         $kysely = getTietokantayhteys()->prepare($sql);
         $kysely->execute(array($raakaaineid));
 
-        $tulos= $kysely->fetchColumn();
+        $tulos = $kysely->fetchColumn();
 
         return $tulos;
     }
 
-    public function lisaaKantaan() {
+    public function lisaaKantaanNimella() {
         $sql = "INSERT INTO raakaaine (nimi, yksikkohinta) VALUES (?,NULL) RETURNING raakaaineid";
         $kysely = getTietokantayhteys()->prepare($sql);
         $ok = $kysely->execute(array(htmlspecialchars($this->getNimi())));
@@ -174,7 +201,12 @@ class Raakaaine {
         $kysely = getTietokantayhteys()->prepare($sql);
         $ok = $kysely->execute(array(htmlspecialchars($this->getYksikkohinta()), $this->getRaakaaineID()));
     }
-    
+
+//    public function asetaYksikkohinta() {
+//        $sql = "UPDATE raakaaine SET yksikkohinta =? WHERE raakaaineid=?";
+//        $kysely = getTietokantayhteys()->prepare($sql);
+//        $ok = $kysely->execute(array(htmlspecialchars($this->getYksikkohinta()), $this->getRaakaaineID()));
+//    }
 
 }
 

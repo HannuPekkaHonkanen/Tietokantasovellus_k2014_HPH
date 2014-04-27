@@ -57,9 +57,15 @@ class Maara {
         if (!is_numeric($this->maara)) {
             $this->virheet["maara"] = "Raaka-ainemäärän tulee olla numero.";
         } elseif ($this->maara <= 0) {
-            $this->virheet["maara"] = "Annosmäärän tulee olla positiivinen.";
+            $this->virheet["maara"] = "Raaka-ainemäärän tulee olla positiivinen.";
         } else {
             unset($this->virheet["maara"]);
+        }
+
+        if ($this->onkoRaakaaineellaMaara($this->reseptiID, $this->vaihenumero, $this->raakaaineID)) {
+            $this->virheet["raakaaineellaonjomaara"] = "Sama raaka-aine voi olla kussakin vaiheessa vain kerran.";
+        } else {
+            unset($this->virheet["raakaaineellaonjomaara"]);
         }
 
         return empty($this->virheet);
@@ -69,14 +75,28 @@ class Maara {
         return $this->virheet;
     }
 
+    public function onkoRaakaaineellaMaara($reseptiid, $vaihenumero, $raakaaineid) {
+        $sql = "SELECT count(*) FROM maara WHERE reseptiid = ? AND vaihenumero = ? AND raakaaineid = ?";
+        $kysely = getTietokantayhteys()->prepare($sql);
+        $kysely->execute(array($reseptiid, $vaihenumero, $raakaaineid));
+
+        $lkm = $kysely->fetchColumn();
+
+        if ($lkm == 0) {
+            return false;
+        } else {
+            return true;
+        }
+    }
+
     public function lisaaKantaan() {
         $sql = "INSERT INTO maara (reseptiid, vaihenumero, raakaaineid, maara, mittayksikko) VALUES (?,?,?,?,?)";
         $kysely = getTietokantayhteys()->prepare($sql);
-        $ok = $kysely->execute(array(htmlspecialchars($this->getReseptiID(), htmlspecialchars($this->getVaihenumero()), htmlspecialchars($this->getRaakaaineID()), htmlspecialchars($this->getMaara()), htmlspecialchars($this->getMittayksikko()))));
+        $ok = $kysely->execute(array(htmlspecialchars($this->getReseptiID()), htmlspecialchars($this->getVaihenumero()), htmlspecialchars($this->getRaakaaineID()), htmlspecialchars($this->getMaara()), htmlspecialchars($this->getMittayksikko())));
     }
 
     public static function haeMaaraReseptiVaiheJaRaakaaineIDeilla($reseptiid, $vaihenumero, $raakaaineid) {
-        $sql = "SELECT reseptiid, vaihenumero, raakaaineid, maara, mittayksikko FROM maara WHERE reseptiid = ? vaihenumero = ? raakaaineid = ?";
+        $sql = "SELECT reseptiid, vaihenumero, raakaaineid, maara, mittayksikko FROM maara WHERE reseptiid = ? AND vaihenumero = ? AND raakaaineid = ?";
         $kysely = getTietokantayhteys()->prepare($sql);
         $kysely->execute(array($reseptiid, $vaihenumero, $raakaaineid));
 
@@ -92,12 +112,12 @@ class Maara {
     }
 
     public static function haeMaaratReseptiIDllaJaVaiheNROlla($reseptiid, $vaihenumero) {
-        $sql = "SELECT reseptiid, vaihenumero, raakaaineid, maara, mittayksikko FROM maara WHERE reseptiid = ? AND vaihenumero = ? ORDER BY vaihenumero";
+        $sql = "SELECT reseptiid, vaihenumero, raakaaineid, maara, mittayksikko FROM maara WHERE reseptiid = ? AND vaihenumero = ?";
         $kysely = getTietokantayhteys()->prepare($sql);
         $kysely->execute(array($reseptiid, $vaihenumero));
 
         $tulokset = array();
-        foreach ($kysely->fetchAll(PDO::FETCH_OBJ) as $maara) {
+        foreach ($kysely->fetchAll(PDO::FETCH_OBJ) as $tulos) {
             $maara = new Maara();
             $maara->setReseptiID($tulos->reseptiid);
             $maara->setVaihenumero($tulos->vaihenumero);

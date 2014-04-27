@@ -6,20 +6,22 @@ ini_set('display_errors', 1);
 require_once "libs/common.php";
 require_once "libs/tietokantayhteys.php";
 require_once "libs/models/Valmistusvaihe.php";
+require_once "libs/models/Maara.php";
 
-$uusiVaihe = new Valmistusvaihe();
+$uusiMaara = new Maara();
 
-$uusiVaihe->setReseptiID((int) $_SESSION["reseptiID"]);
-$uusiVaihe->setNimi(trim($_POST["name"]));
-$uusiVaihe->setOhjeet($_POST["description"]);
-$uusiVaihe->setKuva($_POST["picture"]);
+$uusiMaara->setReseptiID((int) $_SESSION["reseptiID"]);
+$uusiMaara->setVaihenumero((int) $_SESSION["vaiheNRO"]);
+$uusiMaara->setRaakaaineID((int) $_POST["ingredientid"]);
+//$uusiMaara->setRaakaaineID(5);
+$uusiMaara->setMaara($_POST["quantity"]);
+$uusiMaara->setMittayksikko($_POST["unit"]);
 
-if ($uusiVaihe->onkoKelvollinen()) {
+if ($uusiMaara->onkoKelvollinen()) {
 
-    $uusiVaihe->lisaaKantaan();
+    $uusiMaara->lisaaKantaan();
 
-    $_SESSION["ilmoitus"] = "Vaihe lisättiin onnistuneesti.";
-    $_SESSION["vaiheNRO"] = $uusiVaihe->getVaihenumero();
+    $_SESSION["ilmoitus"] = "Raaka-aineen määrä lisättiin onnistuneesti.";
 
     header('Location: addQuantity.php');
 
@@ -32,8 +34,8 @@ if ($uusiVaihe->onkoKelvollinen()) {
 
     unset($_SESSION["ilmoitus"]);
 
-    $sivu = "annavaiheentiedot.php";
-    $virheet = $uusiVaihe->getVirheet();
-    $tiedot = array("vaihe" => $uusiVaihe, "virheet" => $virheet);
+    $sivu = "annamaarantiedot.php";
+    $virheet = $uusiMaara->getVirheet();
+    $tiedot = array("maara" => $uusiMaara, "virheet" => $virheet);
     naytaNakyma($sivu, $tiedot);
 }

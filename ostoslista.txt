@@ -1,0 +1,8 @@
+SELECT maara.raakaaineid, mittayksikko, SUM(maara) FROM maara WHERE reseptiid=4 GROUP BY maara.raakaaineid, mittayksikko
+
+, raakaaine
+
+
+SELECT maara.raakaaineid, raakaaine.nimi, SUM(maara.maara), maara.mittayksikko FROM maara, raakaaine WHERE reseptiid=6 AND maara.raakaaineid=raakaaine.raakaaineid GROUP BY maara.raakaaineid, mittayksikko, raakaaine.nimi ORDER BY raakaaine.nimi
+
+SELECT raakaaine.nimi, SUM(maara.maara), maara.mittayksikko FROM maara, raakaaine WHERE reseptiid=6 AND maara.raakaaineid=raakaaine.raakaaineid GROUP BY maara.raakaaineid, mittayksikko, raakaaine.nimi ORDER BY raakaaine.nimi

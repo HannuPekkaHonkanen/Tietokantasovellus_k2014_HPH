@@ -129,6 +129,7 @@ class Resepti {
         }
         return $tulokset;
     }
+    
 
     public static function annaHaetutReseptitSivulla($sivu, $montako, $hakusana) {
 //        reseptin kenttää kuvaus ei listassa tarvita
@@ -162,7 +163,7 @@ class Resepti {
     }
 
     public static function etsiReseptiIDlla($id) {
-        $sql = "SELECT reseptiid, nimi, kuvaus, raakaaineluokitus, kayttotilanneluokitus, annosmaara, kuva, kayttajaid FROM resepti where reseptiid = ?";
+        $sql = "SELECT reseptiid, nimi, kuvaus, raakaaineluokitus, kayttotilanneluokitus, annosmaara, kuva, kayttajaid FROM resepti WHERE reseptiid = ?";
         $kysely = getTietokantayhteys()->prepare($sql);
         $kysely->execute(array((int) $id));
 
@@ -183,6 +184,29 @@ class Resepti {
             return $resepti;
         }
     }
+
+//    public static function onkoKayttajallaResepteja($id) {
+//        $sql = "SELECT reseptiid, nimi, kuvaus, raakaaineluokitus, kayttotilanneluokitus, annosmaara, kuva, kayttajaid FROM resepti WHERE reseptiid = ?";
+//        $kysely = getTietokantayhteys()->prepare($sql);
+//        $kysely->execute(array((int) $id));
+//
+//        $tulos = $kysely->fetchObject();
+//        if ($tulos == null) {
+//            echo "VIRHE. PAINA SELAIMEN BACK-PAINIKETTA.";
+//            return null;
+//        } else {
+//            $resepti = new Resepti();
+//            $resepti->setReseptiID($tulos->reseptiid);
+//            $resepti->setNimi($tulos->nimi);
+//            $resepti->setKuvaus($tulos->kuvaus);
+//            $resepti->setRaakaaineluokitus($tulos->raakaaineluokitus);
+//            $resepti->setKayttotilanneluokitus($tulos->kayttotilanneluokitus);
+//            $resepti->setAnnosmaara($tulos->annosmaara);
+//            $resepti->setKuva($tulos->kuva);
+//            $resepti->setKayttajaID($tulos->kayttajaid);
+//            return $resepti;
+//        }
+//    }
 
     public static function lukumaara() {
         $sql = "SELECT count(*) FROM resepti";

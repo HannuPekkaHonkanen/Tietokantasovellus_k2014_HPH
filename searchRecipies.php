@@ -28,10 +28,6 @@ $hakusana = $_POST["searchstring"];
 
 $hakusana = "%" . $hakusana . "%";
 
-//$hakusana = $hakusana . $hakusana;
-
-echo $hakusana;
-
 $lista = Resepti::annaHaetutReseptitSivulla($sivunumero, $montakoSivulla, $hakusana);
 
 $lkm = 0;
@@ -40,17 +36,11 @@ foreach ($lista as $resepti) {
     $lkm = $lkm + 1;
 }
 
-//echo $hakusana;
-echo 'lkm';
-echo $lkm;
 $sivuja = ceil($lkm / $montakoSivulla);
-echo 'sivuja';
-echo $sivuja;
 
 if ($lista == NULL) {
-    /* Väärän tunnuksen syöttänyt saa eteensä kirjautumislomakkeen. */
-//    header('Location: frontPage.php');
-    echo 'hakutulos tyhjä';
+    $_SESSION["ilmoitus"] = "Hakusanalla ei löytynyt reseptejä.";
+    header('Location: frontPage.php');
 } else {
     $sivu = "reseptilista.php";
     naytaNakyma($sivu, array("reseptit" => $lista, "sivunro" => $sivunumero, "sivuja" => $sivuja, "resepteja" => $lkm));

@@ -132,6 +132,7 @@ class Maara {
         return $tulokset;
     }
 
+
 ////   TODO poista OSA AINAKIN
 ////    public static function etsiReseptiIDlla($id) {
 ////        $sql = "SELECT nimi, kuvaus, raakaaineluokitus ,kayttotilanneluokitus, annosmaara, kayttajaid FROM valmistusvaihe where reseptiid = ?";

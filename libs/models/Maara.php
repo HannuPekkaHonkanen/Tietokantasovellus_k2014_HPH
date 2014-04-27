@@ -80,7 +80,7 @@ class Maara {
         $kysely = getTietokantayhteys()->prepare($sql);
         $kysely->execute(array($reseptiid, $vaihenumero, $raakaaineid));
 
-        $tulos = $kysely->fetchColumn();
+        $tulos = $kysely->fetchObject();
         $maara = new Maara();
         $maara->setReseptiID($tulos->reseptiid);
         $maara->setVaihenumero($tulos->vaihenumero);
@@ -91,7 +91,7 @@ class Maara {
         return $maara;
     }
 
-    public static function haeMaaratReseptiJaVaiheIDeilla($reseptiid, $vaihenumero) {
+    public static function haeMaaratReseptiIDllaJaVaiheNROlla($reseptiid, $vaihenumero) {
         $sql = "SELECT reseptiid, vaihenumero, raakaaineid, maara, mittayksikko FROM maara WHERE reseptiid = ? AND vaihenumero = ? ORDER BY vaihenumero";
         $kysely = getTietokantayhteys()->prepare($sql);
         $kysely->execute(array($reseptiid, $vaihenumero));

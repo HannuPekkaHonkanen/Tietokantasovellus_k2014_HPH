@@ -12,7 +12,7 @@
 
         <br>
 
-      <div class="input-group">
+        <div class="input-group">
             <span class="input-group-addon">Yksikköhinta</span>
             <input type="text" name="unitprice" class="form-control"/>
             <span class="input-group-addon">€ / kg</span>

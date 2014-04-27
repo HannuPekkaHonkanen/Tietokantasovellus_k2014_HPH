@@ -101,6 +101,24 @@ class Valmistusvaihe {
         return $tulokset;
     }
 
+    public static function haeVaiheReseptiIDllaJaVaiheNROlla($id, $vaihenro) {
+//        $sql = "SELECT reseptiid, vaihenumero, nimi, ohjeet, kuva FROM valmistusvaihe WHERE reseptiid = ? ORDER BY vaihenumero";
+        $sql = "SELECT reseptiid, vaihenumero, nimi, ohjeet, kuva FROM valmistusvaihe WHERE reseptiid=? AND vaihenumero=?";
+        $kysely = getTietokantayhteys()->prepare($sql);
+//        $kysely->execute(array((int) $reseptiid, (int) $vaihenumero));
+        $kysely->execute(array($id, $vaihenro));
+
+        $tulos = $kysely->fetchObject();
+        $valmistusvaihe = new Valmistusvaihe();
+        $valmistusvaihe->setReseptiID($tulos->reseptiid);
+        $valmistusvaihe->setVaihenumero($tulos->vaihenumero);
+        $valmistusvaihe->setNimi($tulos->nimi);
+        $valmistusvaihe->setOhjeet($tulos->ohjeet);
+        $valmistusvaihe->setKuva($tulos->kuva);
+
+        return $valmistusvaihe;
+    }
+
 //   TODO OSA VARMAAN POISTETTAVAA
 //    public static function etsiReseptiIDlla($id) {
 //        $sql = "SELECT nimi, kuvaus, raakaaineluokitus ,kayttotilanneluokitus, annosmaara, kayttajaid FROM valmistusvaihe where reseptiid = ?";

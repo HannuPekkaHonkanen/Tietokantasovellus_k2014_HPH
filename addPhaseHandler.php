@@ -19,7 +19,7 @@ if ($uusiVaihe->onkoKelvollinen()) {
     $uusiVaihe->lisaaKantaan();
 
     $_SESSION["ilmoitus"] = "Vaihe lisättiin onnistuneesti.";
-    $_SESSION["vaiheID"] = $uusiVaihe->getVaihenumero();
+    $_SESSION["vaiheNRO"] = $uusiVaihe->getVaihenumero();
 
     header('Location: addQuantity.php');
 

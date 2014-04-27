@@ -131,7 +131,7 @@ class Resepti {
     }
 
     public static function haeVaiheet() {
-        return Valmistusvaihe::haeVaiheetReseptiIDlla($this->kayttajaID);
+        return Valmistusvaihe::haeVaiheetReseptiIDlla($this->getReseptiID());
     }
 
     public static function etsiReseptiIDlla($id) {

@@ -8,6 +8,7 @@ require_once "libs/common.php";
 require_once "libs/tietokantayhteys.php";
 require_once "libs/models/Valmistusvaihe.php";
 require_once "libs/models/Maara.php";
+require_once "libs/models/Raakaaine.php";
 ?>
 
 <div class="container">
@@ -31,119 +32,81 @@ require_once "libs/models/Maara.php";
         ?>
         </font>
 
-        <h4 class="form-signin-heading">Vaiheen raaka-aineet ja niiden määrät:</h4>
-
-
-
-        <div class="input-group">
-            <span class="input-group-addon">Raaka-aineluokitus, jonka perusteella reseptejä voi hakea (pakollinen tieto)</span>
-            <select name="ingredientClass" class="form-control">
-                <?php $raakaaineluokitus = $data->resepti->getRaakaaineluokitus(); ?>
-                <?php
-                if (!empty($raakaaineluokitus)) {
-                    echo "<option>";
-                    echo $raakaaineluokitus;
-                    echo "</option>";
-                }
-                ?>
-                <option>Marja</option>
-                <option>Salaatti</option>
-                <option>Kasvis</option>
-                <option>Liha</option>
-                <option>Siipikarja</option>
-                <option>Riista</option>
-                <option>Kala</option>
-                <option>Vegaani</option>
-            </select>
-        </div>
-
-        <label>Rotu</label>
-        <select name="rotu_id">
-            <?php foreach (Kissarodut::haeKaikki() as $rotu): ?>
-                <option value="<?php echo $rotu->getId(); ?>"><?php echo $rotu->getNimi(); ?></option>
-<?php endforeach; ?>
-        </select>
-
-
-        <div class="input-group">
-            <span class="input-group-addon">Reseptin nimi (pakollinen tieto)</span>
-            <input type="text" name="name" class="form-control" placeholder="Anna reseptin nimi !" value="<?php echo $data->resepti->getNimi(); ?>" required autofocus/>
-        </div>
+        <?php
+        echo "reseptiid ";
+        echo (int) $_SESSION["reseptiID"];
+        echo "<br>";
+        echo "vaihenro ";
+        echo (int) $_SESSION["vaiheNRO"];
+        echo "<br>";
+//        require 'vaihe.php';
+        ?>
 
         <br>
-
-        <div class="input-group">
-            <span class="input-group-addon">Reseptin kuvaus (max 500 merkkiä)</span>
-            <textarea name="description" class="form-control" rows="5" maxlength="500" placeholder="Reseptin yleiskuvaus (valmistusvaiheille annetaan erikseen ohjeet vaiheittain)"><?php echo $data->resepti->getKuvaus(); ?></textarea>
-                <!--<input type="text" name="recipename" class="form-control"/>-->
-                <!--<span class="input-group-addon">€ / kg</span>-->
-        </div>
-
+        Lisää raaka-aine<br>
         <br>
 
-        <div class="input-group">
-            <span class="input-group-addon">Raaka-aineluokitus, jonka perusteella reseptejä voi hakea (pakollinen tieto)</span>
-            <select name="ingredientClass" class="form-control">
-                <?php $raakaaineluokitus = $data->resepti->getRaakaaineluokitus(); ?>
-                <?php
-                if (!empty($raakaaineluokitus)) {
-                    echo "<option>";
-                    echo $raakaaineluokitus;
-                    echo "</option>";
-                }
-                ?>
-                <option>Marja</option>
-                <option>Salaatti</option>
-                <option>Kasvis</option>
-                <option>Liha</option>
-                <option>Siipikarja</option>
-                <option>Riista</option>
-                <option>Kala</option>
-                <option>Vegaani</option>
-            </select>
-        </div>
-        <br>
 
-        <div class="input-group">
-            <span class="input-group-addon">Käyttötilanneluokitus (pakollinen tieto)</span>
-            <select name="useSituation" class="form-control">
-                <?php $kayttotilanneluokitus = $data->resepti->getKayttotilanneluokitus(); ?>
-                <?php
-                if (!empty($kayttotilanneluokitus)) {
-                    echo "<option>";
-                    echo $kayttotilanneluokitus;
-                    echo "</option>";
-                }
-                ?>
-                <option>Alkujuoma</option>
-                <option>Ruokajuoma</option>
-                <option>Jälkiruokajuoma</option>
-                <option>Alkuruoka</option>
-                <option>Pääruoka</option>
-                <option>Jälkiruoka</option>
-            </select>
-        </div>
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <!--<th>#</th>-->
+                    <th>Raaka-aine</th>
+                    <th>Määrä</th>
+                    <th>Yksikkö</th>
+                    <th>Tallenna</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>
+                        <select name="raakaaineid" class="form-control">
+                            <?php foreach (Raakaaine::haeKaikki() as $raakaaine): ?>
+                                <option value="<?php echo $raakaaine->getRaakaaineID(); ?>"><?php echo $raakaaine->getNimi(); ?></option>
+                            <?php endforeach; ?>
+                        </select>
+                    </td>
 
-        <br>
 
-        <div class="input-group">
-            <span class="input-group-addon">Annosmäärä (pakollinen tieto)</span>
-            <input type="text" name="numberOfPortions" class="form-control" placeholder="Anna annosmäärä !" value="<?php echo $data->resepti->getAnnosmaara(); ?>" required/>
-            <span class="input-group-addon">kpl</span>
-        </div>
 
-        <br>
 
-        <div class="input-group">
-            <span class="input-group-addon">Kuvan URL-osoite</span>
-            <input type="text" name="picture" class="form-control" placeholder="(URL-osoite)" value="<?php echo $data->resepti->getKuva(); ?>"/>
-        </div>
+                    <td>
+                        <div class="input-group">
+                            <span class="input-group-addon">Määrä</span>
+                            <input type="text" name="quantity" class="form-control"/>
+                        </div>
+                    </td>
 
-        <br>
 
-        <br>
+                    <td>
+                        <select name="unit" class="form-control">
+                            <option value="kpl">kpl</option>
+                            <option>kpl</option>
+                            <option>dl</option>
+                            <option>l</option>
+                            <option>g</option>
+                            <option>kg</option>
+                            <option>tl</option>
+                            <option>rl</option>
+                        </select>
+                    </td>
 
-        <button class="btn btn-lg btn-primary btn-block" type="submit">Tallenna yleistiedot</button>
+
+                    <td>
+                        <button class="btn btn-s btn-default" type="submit">Lisää raaka-aine</button>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+
+    </form>
+
+
+    <form action="addPhaseHandler.php" method="POST">
+
+
+        <button class="btn btn-lg btn-primary" type="submit">Lisää uusi vaihe &raquo;</button>
+
     </form>
 
 

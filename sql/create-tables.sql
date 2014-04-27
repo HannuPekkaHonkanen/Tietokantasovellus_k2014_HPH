@@ -34,18 +34,18 @@ CREATE TABLE Ateriakokonaisuudet (
 CREATE TABLE Raakaaine (
         raakaaineid serial primary key,
 	nimi varchar(100) not null unique,				
-        yksikkohinta real,
-        tilavuuspaino real,
-        kappalepaino real,
-        energiaa real,
-        proteiinia real,
-        hyvaaRasvaa real,
-        pahaaRasvaa real,
-        hiilihydraatteja real,
-        joistaSokereita real,
-        joistaLaktoosia real,
-        ravintokuitua real,
-        suolaa real
+        yksikkohinta real
+--         tilavuuspaino real,
+--         kappalepaino real,
+--         energiaa real,
+--         proteiinia real,
+--         hyvaaRasvaa real,
+--         pahaaRasvaa real,
+--         hiilihydraatteja real,
+--         joistaSokereita real,
+--         joistaLaktoosia real,
+--         ravintokuitua real,
+--         suolaa real
 );
 
 CREATE TABLE Valmistusvaihe (

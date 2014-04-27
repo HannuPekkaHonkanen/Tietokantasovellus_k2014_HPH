@@ -24,6 +24,7 @@ $lisattavaResepti = Resepti::etsiReseptiIDlla((int) $_SESSION["reseptiID"]);
     <!--TODO NÄYTÄ KUVA TAI OTA KOKONAAN RESEPTIN TIEDOISTA POIS-->
     <!--<button type="button" class="btn btn-xs btn-default"><span class="glyphicon glyphicon-edit"></span> Muokkaa</button>-->
 
+    <!--<h4 class="form-signin-heading">Vaiheen raaka-aineet ja niiden määrät:</h4>-->
 
     <table class="table table-striped">
         <thead>
@@ -36,10 +37,10 @@ $lisattavaResepti = Resepti::etsiReseptiIDlla((int) $_SESSION["reseptiID"]);
             </tr>
         </thead>
         <tbody>
-            <?php foreach (Maara::haeMaaratReseptiJaVaiheIDeilla((int) $_SESSION["reseptiID"], (int) $_SESSION["vaiheID"]) as $maara) { ?>
+            <?php foreach (Maara::haeMaaratReseptiIDllaJaVaiheNROlla((int) $_SESSION["reseptiID"], (int) $vaihe->getVaihenumero()) as $maara) { ?>
                 <tr>
                         <!--<td>1</td>-->
-                <!--<td><A href="recipe.php?id=<?php // echo $resepti->getReseptiID();   ?>"><?php // echo $resepti->getNimi();   ?></A></td>-->
+                <!--<td><A href="recipe.php?id=<?php // echo $resepti->getReseptiID();    ?>"><?php // echo $resepti->getNimi();    ?></A></td>-->
                     <!--Raaka-aine-->             <td><?php echo Raakaaine::haeNimiRaakaaineIDlla($maara->getRaakaaineID()); ?></td>
                     <!--Määrä-->           <td><?php echo $maara->getMaara(); ?></td>
                     <!--Yksikkö-->         <td><?php echo $maara->getMittayksikko(); ?></td>

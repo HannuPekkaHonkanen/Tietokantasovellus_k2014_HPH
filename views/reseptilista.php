@@ -15,7 +15,7 @@
             <?php foreach ($data->reseptit as $resepti) { ?>
                 <tr>
                         <!--<td>1</td>-->
-                    <td><A href="recipe.php?id=<?php echo $resepti->getReseptiID(); ?>"><?php echo $resepti->getNimi(); ?></A></td>
+                    <td><A href="showRecipe.php?id=<?php echo $resepti->getReseptiID(); ?>"><?php echo $resepti->getNimi(); ?></A></td>
                     <td><?php echo $resepti->getRaakaaineluokitus(); ?></td>
                     <!--<td><?php // echo $resepti->getReseptiID(); ?></td>-->
                     <td><?php echo $resepti->getKayttotilanneluokitus(); ?></td>

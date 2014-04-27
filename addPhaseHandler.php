@@ -23,11 +23,6 @@ if ($uusiVaihe->onkoKelvollinen()) {
 
     header('Location: addQuantity.php');
 
-//NOTE POISTA
-//    $sivu = "annavaiheenmaarat.php";
-//    $virheet = array();
-//    $tiedot = array("resepti" => $uusiResepti, "virheet" => $virheet);
-//    naytaNakyma($sivu, $tiedot);
 } else {
 
     unset($_SESSION["ilmoitus"]);

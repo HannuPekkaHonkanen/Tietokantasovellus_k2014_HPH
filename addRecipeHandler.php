@@ -38,7 +38,7 @@ if ($uusiResepti->onkoKelvollinen()) {
     
     unset($_SESSION["ilmoitus"]);
 
-    $sivu = "annaReseptinYleistiedot.php";
+    $sivu = "annareseptinyleistiedot.php";
     $virheet = $uusiResepti->getVirheet();
     $tiedot=array("resepti" => $uusiResepti, "virheet" => $virheet);
     naytaNakyma($sivu, $tiedot);

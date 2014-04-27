@@ -10,7 +10,7 @@ require_once "libs/models/Resepti.php";
 $lisattavaResepti = Resepti::etsiReseptiIDlla((int) $_SESSION["reseptiID"]);
 ?>
 
-<h2 class="form-signin-heading"><?php echo $lisattavaResepti->getNimi(); ?></h2>
+<h1 class="form-signin-heading"><u><?php echo $lisattavaResepti->getNimi(); ?></u></h1>
 
 <?php echo $lisattavaResepti->getKuvaus(); ?>
 

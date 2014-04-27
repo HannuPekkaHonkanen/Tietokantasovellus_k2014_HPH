@@ -8,6 +8,9 @@ require_once 'libs/common.php';
 require_once 'libs/tietokantayhteys.php';
 require_once 'libs/models/Resepti.php';
 
+// kun siirrytaan tai palataan reseptilistaan, poistetaan katseltavan tai muokattavan reseptin ID
+unset($_SESSION["reseptiID"]);
+
 $sivunumero = 1;
 if (isset($_GET["sivunro"])) {
     $sivunumero = (int) $_GET["sivunro"];

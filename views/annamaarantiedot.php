@@ -45,7 +45,7 @@ require_once "libs/models/Raakaaine.php";
             <thead>
                 <tr>
                     <!--<th>#</th>-->
-                    <th>Lisää raaka-aine</th>
+                    <!--<th>Lisää raaka-aine</th>-->
 <!--                    <th>Määrä</th>
                     <th>Yksikkö</th>
                     <th>Tallenna</th>-->

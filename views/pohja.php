@@ -41,6 +41,7 @@
                             <li class="active"><a href="addIngredient.php#">Lisää raaka-aine (lisätään ennen reseptin lisäämistä)</a></li>
                             <li><a href="addRecipe.php#">Lisää resepti</a></li>
                         <?php } ?>
+                            <li><a href="listRecipies.php#">Listaa kaikki reseptit</a></li>
                         <!--<li><a href="#">Linkki</a></li>-->
                         <!--
                         <li class="dropdown">

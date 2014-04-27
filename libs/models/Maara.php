@@ -122,8 +122,8 @@ class Maara {
             $maara->setReseptiID($tulos->reseptiid);
             $maara->setVaihenumero($tulos->vaihenumero);
             $maara->setRaakaaineID($tulos->raakaaineid);
-            $maara->getMaara($tulos->maara);
-            $maara->getMittayksikko($tulos->mittayksikko);
+            $maara->setMaara($tulos->maara);
+            $maara->setMittayksikko($tulos->mittayksikko);
 
             //$array[] = $muuttuja; lisää muuttujan arrayn perään. 
 

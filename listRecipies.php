@@ -17,7 +17,7 @@ if (isset($_GET["sivunro"])) {
         $sivunumero = 1;
 }
 
-$montakoSivulla = 5;
+$montakoSivulla = 10;
 
 //Lista asioista array-tietotyyppiin laitettuna:
 $lista = Resepti::getReseptitSivulla($sivunumero, $montakoSivulla);

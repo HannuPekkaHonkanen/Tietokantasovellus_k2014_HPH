@@ -1,5 +1,4 @@
-<p><A href="showList.php#"> 
-        Linkki ESIMERKKIhakutuloslistaan</A></p>
+<div class="container">
+    <h2>(Tähän voisi vaikka myydä mainostilaa.)</h2>
+</div>
 
-<p><A href="myPage.php#"> 
-        Linkki OMAAN KEITTOKIRJAAN (vaatii kirjautumisen)</A></p>

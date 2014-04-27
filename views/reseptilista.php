@@ -1,5 +1,5 @@
 <div class="container">
-    <h1>Reseptilista (TODO hakutulos)</h1>
+    <h1>Reseptilista</h1>
     <table class="table table-striped">
         <thead>
             <tr>
@@ -8,7 +8,7 @@
                 <th>Raaka-aineluokitus</th>
                 <th>Käyttötilanneluokitus</th>
                 <th>Annosmäärä</th>
-                <th>XXXXXXXXXX Muokkaa (jos oma)</th>
+                <!--<th>TODO Muokkaa (jos oma)</th>-->
             </tr>
         </thead>
         <tbody>
@@ -20,7 +20,7 @@
                     <!--<td><?php // echo $resepti->getReseptiID(); ?></td>-->
                     <td><?php echo $resepti->getKayttotilanneluokitus(); ?></td>
                     <td><?php echo $resepti->getAnnosmaara(); ?></td>
-                    <td><button type="button" class="btn btn-xs btn-default"><span class="glyphicon glyphicon-edit"></span> Muokkaa</button></td>
+                    <!--TODO<td><button type="button" class="btn btn-xs btn-default"><span class="glyphicon glyphicon-edit"></span> Muokkaa</button></td>-->
                 </tr>
             <?php } ?>
         </tbody>

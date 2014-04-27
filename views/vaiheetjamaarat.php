@@ -33,7 +33,7 @@ $lisattavaResepti = Resepti::etsiReseptiIDlla((int) $_SESSION["reseptiID"]);
                 <th>Raaka-aine</th>
                 <th>Määrä</th>
                 <th>Yksikkö</th>
-                <th>TODOTallenna???</th>
+                <!--<th>TODOmuokkaa???</th>-->
             </tr>
         </thead>
         <tbody>
@@ -41,15 +41,16 @@ $lisattavaResepti = Resepti::etsiReseptiIDlla((int) $_SESSION["reseptiID"]);
                 <tr>
                         <!--<td>1</td>-->
                 <!--<td><A href="recipe.php?id=<?php // echo $resepti->getReseptiID();    ?>"><?php // echo $resepti->getNimi();    ?></A></td>-->
-                    <!--Raaka-aine-->             <td><?php echo Raakaaine::haeNimiRaakaaineIDlla($maara->getRaakaaineID()); ?></td>
-                    <!--Määrä-->           <td><?php echo $maara->getMaara(); ?></td>
-                    <!--Yksikkö-->         <td><?php echo $maara->getMittayksikko(); ?></td>
-                    <!--xx-->         <td><button type="button" class="btn btn-xs btn-default"><span class="glyphicon glyphicon-edit"></span>TODOTallenna???</button></td>
+                               <td><?php echo Raakaaine::haeNimiRaakaaineIDlla($maara->getRaakaaineID()); ?></td>
+                          <td><?php echo $maara->getMaara(); ?></td>
+                          <td><?php echo $maara->getMittayksikko(); ?></td>
+                        <!--<td><button type="button" class="btn btn-xs btn-default"><span class="glyphicon glyphicon-edit"></span> TODOmuokkaa???</button></td>-->
                 </tr>
             <?php } ?>
         </tbody>
     </table>
 
+<!--    <br>-->
 
 <?php } ?>
 

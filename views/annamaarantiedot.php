@@ -33,28 +33,22 @@ require_once "libs/models/Raakaaine.php";
         </font>
 
         <?php
-        echo "reseptiid ";
-        echo (int) $_SESSION["reseptiID"];
-        echo "<br>";
-        echo "vaihenro ";
-        echo (int) $_SESSION["vaiheNRO"];
-        echo "<br>";
-//        require 'vaihe.php';
+//        echo "reseptiid ";
+//        echo (int) $_SESSION["reseptiID"];
+//        echo "<br>";
+//        echo "vaihenro ";
+//        echo (int) $_SESSION["vaiheNRO"];
+//        echo "<br>";
         ?>
-
-        <br>
-        Lisää raaka-aine<br>
-        <br>
-
 
         <table class="table table-striped">
             <thead>
                 <tr>
                     <!--<th>#</th>-->
-                    <th>Raaka-aine</th>
-                    <th>Määrä</th>
+                    <th>Lisää raaka-aine</th>
+<!--                    <th>Määrä</th>
                     <th>Yksikkö</th>
-                    <th>Tallenna</th>
+                    <th>Tallenna</th>-->
                 </tr>
             </thead>
             <tbody>
@@ -97,9 +91,17 @@ require_once "libs/models/Raakaaine.php";
     </form>
 
 
-    <form action="addPhaseHandler.php" method="POST">
+    <form action="addPhase.php">
 
         <button class="btn btn-lg btn-primary" type="submit">Lisää uusi vaihe &raquo;</button>
+
+    </form>
+
+    <br>
+
+    <form action="recipeReady.php">
+
+        <button class="btn btn-lg btn-primary btn-block" type="submit">Resepti valmis!</button>
 
     </form>
 

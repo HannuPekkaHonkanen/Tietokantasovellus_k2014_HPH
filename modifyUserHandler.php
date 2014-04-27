@@ -37,7 +37,15 @@ $muokattuKayttaja->setSahkoposti($_POST["email"]);
 //$xuusiKayttaja->setSalasana("tt");
 //$xuusiKayttaja->setSahkoposti("ttt");
 //echo $uusiKayttaja;
+
+// TODO LISÄÄ VIRHETARKISTUKSET
+
 $muokattuKayttaja->muokkaa();
+
+$_SESSION["ilmoitus"] = "Käyttäjätietosi on muutettu.";
+
+$sivu = "keittokirjaEtusivu.php";
+naytaNakyma($sivu);
 
 
 ///* XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXTarkistetaan onko parametrina saatu oikeat tunnukset */

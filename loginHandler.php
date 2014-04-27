@@ -1,4 +1,5 @@
 <?php
+
 error_reporting(E_ALL);
 ini_set('display_errors', 1);
 
@@ -9,19 +10,18 @@ require_once "libs/models/Kayttaja.php";
 
 
 if (empty($_POST["username"]) || empty($_POST["password"])) {
-    /* Käytetään omassa kirjastotiedostossa määriteltyä näkymännäyttöfunktioita */
+    $_SESSION["ilmoitus"] = "Sekä tunnus että salasana tulee antaa!";
     $sivu = "kirjautumissivu.php";
     naytaNakyma($sivu);
-//    exit(); // Lopetetaan suoritus tähän. Kutsun voi sijoittaa myös naytaNakyma-funktioon, niin sitä ei tarvitse toistaa joka paikassa
 }
 
 $kayttajatunnus = $_POST["username"];
 $salasana = $_POST["password"];
 $haettuKayttaja = Kayttaja::etsiKayttajaTunnuksilla($kayttajatunnus, $salasana);
-    echo $haettuKayttaja->getKayttajatunnus;
-    echo "\x07";
-    sleep(2);
-    
+echo $haettuKayttaja->getKayttajatunnus;
+echo "\x07";
+sleep(2);
+
 /* Tarkistetaan onko parametrina saatu oikeat tunnukset */
 if ($haettuKayttaja == NULL) {
     /* TODO Väärän tunnuksen syöttänyt saa eteensä kirjautumislomakkeen. */

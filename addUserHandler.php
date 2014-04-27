@@ -19,8 +19,10 @@ $uusiKayttaja->setSahkoposti($_POST["email"]);
 
 $uusiKayttaja->lisaaKantaan();
 
-//TODO OHJAA JOLLEKIN SIVULLE
+$_SESSION["ilmoitus"] = "Tunnuksesi on lisätty KEITTOKIRJAan. Voit nyt kirjautua sisään.";
 
+$sivu = "keittokirjaEtusivu.php";
+naytaNakyma($sivu);
 
 
 ///* XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXTarkistetaan onko parametrina saatu oikeat tunnukset */

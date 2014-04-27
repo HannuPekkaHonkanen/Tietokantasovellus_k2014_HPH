@@ -41,7 +41,7 @@ class Kayttaja {
     public function getSahkoposti() {
         return $this->sahkoposti;
     }
-
+    
     public static function getKayttajat() {
         $sql = "SELECT kayttajaid, kayttajatunnus, salasana, sahkoposti FROM kayttaja ORDER BY kayttajatunnus";
         $kysely = getTietokantayhteys()->prepare($sql);

@@ -7,6 +7,9 @@ $id = (int)$_GET["id"];
 
 $resepti = Resepti::etsiReseptiIDlla($id);
 
+
+
+//$sivu = "annaReseptinYleistiedot.php";
 $sivu = "reseptisivu.php";
 $virheet=array();
 $tiedot=array("resepti" => $resepti, "virheet" => $virheet);

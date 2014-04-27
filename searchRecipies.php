@@ -1,4 +1,5 @@
 <?php
+
 error_reporting(E_ALL);
 ini_set('display_errors', 1);
 
@@ -20,12 +21,31 @@ if (isset($_GET["sivunro"])) {
         $sivunumero = 1;
 }
 
-$montakoSivulla = 10;
+$montakoSivulla = 5;
 
-//Lista asioista array-tietotyyppiin laitettuna:
-$lista = Resepti::getReseptitSivulla($sivunumero, $montakoSivulla);
-$lkm = Resepti::lukumaara();
+
+$hakusana = $_POST["searchstring"];
+
+$hakusana = "%" . $hakusana . "%";
+
+//$hakusana = $hakusana . $hakusana;
+
+echo $hakusana;
+
+$lista = Resepti::annaHaetutReseptitSivulla($sivunumero, $montakoSivulla, $hakusana);
+
+$lkm = 0;
+
+foreach ($lista as $resepti) {
+    $lkm = $lkm + 1;
+}
+
+//echo $hakusana;
+echo 'lkm';
+echo $lkm;
 $sivuja = ceil($lkm / $montakoSivulla);
+echo 'sivuja';
+echo $sivuja;
 
 if ($lista == NULL) {
     /* Väärän tunnuksen syöttänyt saa eteensä kirjautumislomakkeen. */

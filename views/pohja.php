@@ -58,9 +58,9 @@
                         </li>
                         -->
                     </ul>
-                    <form class="navbar-form navbar-left" role="search">
+                    <form action="searchRecipies.php" class="navbar-form navbar-left" role="search" method="POST">
                         <div class="form-group">
-                            <input type="text" class="form-control" placeholder="Ruokalaji/raaka-aine/ateriakokonaisuus">
+                            <input type="text" name="searchstring" class="form-control" size="40" placeholder="Ruokalaji/raaka-aine (tai osa niiden nimestä)">
                         </div>
                         <button type="submit" class="btn btn-default">Hae</button>
                     </form>

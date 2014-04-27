@@ -13,7 +13,7 @@ require_once "libs/models/Raakaaine.php";
 
 <div class="container">
 
-    <form action="listRecipies.php">
+    <!--<form action="listRecipies.php">-->
 
         <?php
         require 'reseptinyleistiedot.php';
@@ -34,8 +34,8 @@ require_once "libs/models/Raakaaine.php";
 
         <br>
 
-        <button class="btn btn-lg btn-primary" type="submit">Palaa takaisin reseptilistaan &raquo;</button>
+        <!--<button class="btn btn-lg btn-primary" type="submit">Palaa takaisin reseptilistaan &raquo;</button>-->
 
-    </form>
+    <!--</form>-->
 
 </div> 

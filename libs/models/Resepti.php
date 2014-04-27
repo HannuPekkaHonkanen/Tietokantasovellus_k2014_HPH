@@ -130,6 +130,33 @@ class Resepti {
         return $tulokset;
     }
 
+    public static function annaHaetutReseptitSivulla($sivu, $montako, $hakusana) {
+//        reseptin kenttää kuvaus ei listassa tarvita
+        $sql = "SELECT DISTINCT resepti.reseptiid, resepti.nimi, resepti.raakaaineluokitus, resepti.kayttotilanneluokitus, resepti.annosmaara, resepti.kayttajaid
+            FROM resepti, maara, raakaaine
+            WHERE resepti.nimi LIKE ? OR
+            (resepti.reseptiid=maara.reseptiid AND
+            maara.raakaaineid=raakaaine.raakaaineid AND
+            raakaaine.nimi LIKE ?)
+            ORDER BY resepti.nimi LIMIT ? OFFSET ?";
+        $kysely = getTietokantayhteys()->prepare($sql);
+        $kysely->execute(array($hakusana, $hakusana, $montako, ($sivu - 1) * $montako));
+
+        $tulokset = array();
+        foreach ($kysely->fetchAll(PDO::FETCH_OBJ) as $tulos) {
+            $resepti = new Resepti();
+            $resepti->setReseptiID($tulos->reseptiid);
+            $resepti->setNimi($tulos->nimi);
+            $resepti->setRaakaaineluokitus($tulos->raakaaineluokitus);
+            $resepti->setKayttotilanneluokitus($tulos->kayttotilanneluokitus);
+            $resepti->setAnnosmaara($tulos->annosmaara);
+            $resepti->setKayttajaID($tulos->kayttajaid);
+
+            $tulokset[] = $resepti;
+        }
+        return $tulokset;
+    }
+
     public static function haeVaiheet() {
         return Valmistusvaihe::haeVaiheetReseptiIDlla($this->getReseptiID());
     }

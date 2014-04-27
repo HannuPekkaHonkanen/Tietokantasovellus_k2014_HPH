@@ -35,7 +35,7 @@
         <A href="listRecipies.php?sivunro=<?php echo $data->sivunro + 1; ?>">Seuraava sivu</A>
     <?php } ?>
 
-    Yhteensä <?php echo $resepti::lukumaara() ?> reseptiä.
+    Yhteensä <?php echo $data->resepteja ?> reseptiä.
     Olet sivulla <?php echo $data->sivunro; ?>/<?php echo $data->sivuja; ?>.
 </div>
 

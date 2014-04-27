@@ -38,10 +38,13 @@
                 <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                     <ul class="nav navbar-nav">
                         <?php if (onKirjautunut()) { ?>
-                        <li class="active"><a href="addIngredient.php#"><b>Lisää raaka-aine (ennen reseptin lisäämistä!)</b></a></li>
+                            <li class="active"><a href="addIngredient.php#"><b>Lisää raaka-aine (ennen reseptin lisäämistä!)</b></a></li>
                             <li><a href="addRecipe.php#">Lisää resepti</a></li>
                         <?php } ?>
-                            <li><a href="listRecipies.php#">Kaikki reseptit</a></li>
+                        <li><a href="listRecipies.php#">Listaa kaikki reseptit</a></li>
+                        <?php if (onKirjautunut()) { ?>
+                        <li><a href="listUsernames.php#">Listaa käyttäjät</a></li>
+                        <?php } ?>
                         <!--<li><a href="#">Linkki</a></li>-->
                         <!--
                         <li class="dropdown">
@@ -103,7 +106,7 @@
                 ?>
             </center>
 
-                <?php require $sivu; ?>
+            <?php require $sivu; ?>
 
         </div>
     </body>
